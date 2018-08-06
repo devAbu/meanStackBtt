@@ -19,25 +19,71 @@
 
 <body>
 
-    <nav class="navbar bg-primary navbar-dark navbar-expand-md fixed-top" style="opacity:0.7; font-size:18px;">
+    <nav class="navbar bg-dark navbar-dark navbar-expand-md fixed-top" style="opacity:0.7; font-size:18px;">
         <a href="index.php" class="navbar-brand">
             <img src="images/icon.png" alt="logo" class="img-fluid mr-3" width="45" height="45" />
-            <span class="h4">BTT Admin</span>
+            <span class="h4" style="color: rgb(175, 175, 175);">BTT Admin</span>
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav" id="navScrollspy">
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <div class="input-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-lg fa-search"></i>
+                                </span>
+                            </div>
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                        </div>
+                    </div>
                 </form>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#">Logout</a>
+                    <a href="#" class="nav-link link">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <section id="tours">
+        <div class="row">
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tour number</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tour average price</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Office number</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Employees number</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 </body>

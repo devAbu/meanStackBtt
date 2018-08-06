@@ -1,0 +1,11 @@
+body {
+    padding-top: 75px;
+}
+
+.card {
+    border: 1px goldenrod solid !important;
+}
+
+.card-title {
+    color: gold;
+}
