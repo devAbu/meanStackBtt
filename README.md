@@ -1,2 +1,3 @@
 # meanStackBtt
-private meanstack project
+
+Project proposal - Admin page for BTT. First admin will have to login with his email and password. On the page, admin will be able to add a new tour, edit or remove existing one; edit number of offices and employees. There will be search bar that will help admin to search tours. There will be "cards" that will include number of tours in our company, it will be automatically increase by one when the admin add new tour, it will also be "card" for average price, which will be automatically calculated when new tour added or updated. Finally, of course the admin will be able to log out.
