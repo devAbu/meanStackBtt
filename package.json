@@ -1,0 +1,20 @@
+{
+  "name": "btt",
+  "version": "1.0.0",
+  "description": "summer school",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devAbu/meanStackBtt.git"
+  },
+  "author": "abu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devAbu/meanStackBtt/issues"
+  },
+  "homepage": "https://github.com/devAbu/meanStackBtt#readme"
+}
