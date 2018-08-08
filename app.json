@@ -1,0 +1,7 @@
+{
+    "name": "BTT",
+    "description": "Bosnian Tourist Travel",
+    "repository" : "https://github.com/devAbu/meanStackBtt.git",
+    "logo" : "http://node-js-sample.herokuapp.com/node.svg",
+    "keywords": ["node","express","static"]
+}
