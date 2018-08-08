@@ -21,11 +21,6 @@
 }
 
 
-
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
 * {
 	margin: 0px; 
 	padding: 0px; 
@@ -37,7 +32,6 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 
-/*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
 	font-size: 14px;
@@ -63,7 +57,6 @@ a:hover {
   color: linear-gradient(left, #21d4fd, #b721ff);
 }
 
-/*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
 }
@@ -81,8 +74,6 @@ ul, li {
 	list-style-type: none;
 }
 
-
-/*---------------------------------------------*/
 input {
 	outline: none;
 	border: none;
@@ -117,7 +108,6 @@ textarea:-moz-placeholder { color: #adadad;}
 textarea::-moz-placeholder { color: #adadad;}
 textarea:-ms-input-placeholder { color: #adadad;}
 
-/*---------------------------------------------*/
 button {
 	outline: none !important;
 	border: none;
@@ -132,9 +122,6 @@ iframe {
 	border: none !important;
 }
 
-
-/*//////////////////////////////////////////////////////////////////
-[ Utility ]*/
 .txt1 {
   font-family: Poppins-Regular;
   font-size: 13px;
@@ -148,9 +135,6 @@ iframe {
   color: #333333;
   line-height: 1.5;
 }
-
-/*//////////////////////////////////////////////////////////////////
-[ login ]*/
 
 .limiter {
   width: 100%;
@@ -186,10 +170,6 @@ iframe {
   -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-
-/*------------------------------------------------------------------
-[ Form ]*/
-
 .login100-form {
   width: 100%;
 }
@@ -205,9 +185,6 @@ iframe {
 .login100-form-title i {
   font-size: 60px;
 }
-
-/*------------------------------------------------------------------
-[ Input ]*/
 
 .wrap-input100 {
   width: 100%;
@@ -229,7 +206,6 @@ iframe {
   padding: 0 5px;
 }
 
-/*---------------------------------------------*/ 
 .focus-input100 {
   position: absolute;
   display: block;
@@ -297,7 +273,6 @@ iframe {
   width: 100%;
 }
 
-/*---------------------------------------------*/
 .btn-show-pass {
   font-size: 15px;
   color: #999999;
@@ -336,10 +311,6 @@ iframe {
   color: linear-gradient(left, #21d4fd, #b721ff);
 }
 
-
-
-/*------------------------------------------------------------------
-[ Button ]*/
 .container-login100-form-btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -404,19 +375,12 @@ iframe {
 }
 
 
-/*------------------------------------------------------------------
-[ Responsive ]*/
-
 @media (max-width: 576px) {
   .wrap-login100 {
     padding: 77px 15px 33px 15px;
   }
 }
 
-
-
-/*------------------------------------------------------------------
-[ Alert validate ]*/
 
 .validate-input {
   position: relative;
@@ -483,6 +447,3 @@ iframe {
     opacity: 1;
   }
 }
-
-
-
