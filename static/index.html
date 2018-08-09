@@ -13,44 +13,46 @@
     <meta name="author" content="abu">
     <meta name="keywords" content="btt, bosnian, tourist, travel, agency, arabic, bosna, admin">
     <meta name="description" content="BTT - Bosnian Toursit Travel admin page to add new tour, remove or update existing tour. ">
-   
 
-    
+    <script src="controllers/getTours.js"></script>
+
+    <body ng-app="myApp">
+
+        <script>
+            var app = angular.module("myApp", ["ngRoute"]);
+            app.controller('getTours', getTours);
 
 
-<body ng-app="myApp">
+            app.config(function ($routeProvider) {
+                $routeProvider
+                    .when("/", {
+                        templateUrl: "login.html"
+                    })
+                    .when("/register", {
+                        templateUrl: "register.html"
+                    })
+                    .when("/userPage", {
+                        templateUrl: "user.html",
+                        controller: "getTours"
+                    })
+                    .when("/adminPage", {
+                        templateUrl: "admin.html",
+                        controller: "getTours"
+                    })
+                    .when("/carPage", {
+                        templateUrl: "carPage.html"
+                    })
+                    .when("/employeePage", {
+                        templateUrl: "employeePage.html"
+                    })
+                    .when("/change", {
+                        templateUrl: "changePass.html"
+                    })
+            });
+        </script>
 
-    <script>
-        var app = angular.module("myApp", ["ngRoute"]);
+        <div ng-view></div>
 
-        app.config(function ($routeProvider) {
-            $routeProvider
-                .when("/", {
-                    templateUrl: "login.html"
-                })
-                .when("/register", {
-                    templateUrl: "register.html"
-                })
-                .when("/userPage", {
-                    templateUrl: "user.html"
-                })
-                .when("/adminPage", {
-                    templateUrl: "admin.html"
-                })
-                .when("/carPage", {
-                    templateUrl: "carPage.html"
-                })
-                .when("/employeePage", {
-                    templateUrl: "employeePage.html"
-                })
-                .when("/change", {
-                    templateUrl: "changePass.html"
-                })
-        });
-    </script>
-
-    <div ng-view></div>
-
-</body>
+    </body>
 
 </html>

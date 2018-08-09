@@ -13,6 +13,8 @@
     <!--Google Fonts-->
     <link href="//fonts.googleapis.com/css?family=Carrois+Gothic" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
 <body>
@@ -57,7 +59,7 @@
                 </div>
                 <div class="clearfix"> </div>
             </div>
-            <!--heder end here-->
+            <!--header end here-->
 
 
 
@@ -99,89 +101,12 @@
                             <div class="clearfix"> </div>
                         </div>
                     </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Tour 1 </h3>
-                                <h4>Tour name</h4>
-                                <p>Tour city</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Tour 2</h3>
-                                <h4>Tour name</h4>
-                                <p>Tour city</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
+                    <div class="col-md-4 market-update-gd" style="margin-top:2%" ng-repeat="x in myWelcome">
                         <div class="market-update-block clr-block-3">
                             <div class="col-md-8 market-update-left">
-                                <h3>Tour 3</h3>
-                                <h4>Tour name</h4>
-                                <p>Tour city</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Tour 4</h3>
-                                <h4>Tour name</h4>
-                                <p>Tour city</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Tour 5</h3>
-                                <h4>Tour name</h4>
-                                <p>Tour city</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Tour 6</h3>
-                                <h4>Tour name</h4>
-                                <p>Tour city</p>
+                                <h3>{{x.name}}</h3>
+                                <h4>{{x.city}}</h4>
+                                <p>{{x.description}}</p>
                                 <button class="btn btn-warning">Edit</button>
                                 <button class="btn btn-danger">Remove</button>
                             </div>
@@ -194,7 +119,6 @@
                     <div class="clearfix" style="margin-bottom:10px"> </div>
                 </div>
                 <!--market updates end here-->
-
 
                 <!--copy rights start here-->
                 <div class="copyrights " style="margin-top:10px;">

@@ -10,9 +10,11 @@ app.use(body_parser.json())
 
 app.use(express.static(__dirname + '/static'))
 
-app.get('/tour', function (req, res) {
+app.get('/tours', function (req, res) {
   db.tour.find(function (err, docs) {
     res.json(docs)
+    /* response.setHeader('Content-Type', 'application/json');
+    response.send(docs); */
   })
 })
 
