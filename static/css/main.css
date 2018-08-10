@@ -257,7 +257,8 @@ iframe {
   transition: all 0.4s;
 }
 
-.input100:focus + .focus-input100::after {
+
+ .focus-input100::after {
   top: -15px;
 }
 

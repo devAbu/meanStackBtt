@@ -68,13 +68,22 @@
                 <div style="margin-bottom: 20px; margin-left:45%">
                     <button class="btn btn-lg btn-success" style="margin-bottom: 20px;">Add new</button>
                 </div>
-                <div style="margin-bottom: 20px; margin-left:35%">
-                    <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px">
-                    <br>
-                    <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px">
-                    <br>
-                    <input type="button" value="Add" class="btn btn-success">
-                </div>
+                <form action="/addTour" method="post" name="tourForm" novalidate>
+                    <div style="margin-bottom: 20px; margin-left:35%">
+                        <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="name">
+                        <br>
+                        <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px" id="tourCity" name="tourCity" ng-model="city">
+                        <br>
+                        <input type="text" placeholder="Tour description..." class="form-control" style="width: 350px" id="tourDescription" name="tourDescription"
+                            ng-model="description">
+                        <br>
+                        <input type="text" placeholder="Tour image..." class="form-control" style="width: 350px" id="tourImage" name="tourImage"
+                            ng-model="image">
+                        <br>
+                        <input type="submit" value="Add" class="btn btn-success">
+                        <input type="reset" value="Cancel" class="btn btn-danger">
+                    </div>
+                </form>
                 <!--market updates updates-->
                 <div class="market-updates">
                     <div class="col-md-6 market-update-gd">
@@ -108,7 +117,7 @@
                                 <h4>{{x.city}}</h4>
                                 <p>{{x.description}}</p>
                                 <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
+                                <button class="btn btn-danger" ng-click="deleteTour(x._id)">Remove</button>
                             </div>
                             <div class="col-md-4 market-update-right">
                                 <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
