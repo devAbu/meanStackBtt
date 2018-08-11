@@ -68,69 +68,69 @@
                 <div style="margin-bottom: 20px; margin-left:45%">
                     <button class="btn btn-lg btn-success" style="margin-bottom: 20px;">Add new</button>
                 </div>
-                <form action="/addTour" method="post" name="tourForm" novalidate>
+                <form name="tourForm" novalidate>
                     <div style="margin-bottom: 20px; margin-left:35%">
-                        <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="name">
+                        <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="tour.name">
                         <br>
-                        <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px" id="tourCity" name="tourCity" ng-model="city">
+                        <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px" id="tourCity" name="tourCity" ng-model="tour.city">
                         <br>
                         <input type="text" placeholder="Tour description..." class="form-control" style="width: 350px" id="tourDescription" name="tourDescription"
-                            ng-model="description">
+                            ng-model="tour.description">
                         <br>
                         <input type="text" placeholder="Tour image..." class="form-control" style="width: 350px" id="tourImage" name="tourImage"
-                            ng-model="image">
+                            ng-model="tour.image">
                         <br>
-                        <input type="submit" value="Add" class="btn btn-success">
-                        <input type="reset" value="Cancel" class="btn btn-danger">
+                        <input type="button" value="Add" class="btn btn-success" ng-click="addTour()">
+                        <input type=" reset " value="Cancel " class="btn btn-danger ">
                     </div>
                 </form>
                 <!--market updates updates-->
-                <div class="market-updates">
-                    <div class="col-md-6 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
+                <div class="market-updates ">
+                    <div class="col-md-6 market-update-gd ">
+                        <div class="market-update-block clr-block-1 ">
+                            <div class="col-md-8 market-update-left ">
                                 <h3>6</h3>
                                 <h4>Registered Users</h4>
                             </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-users " style="color: white !important"></i>
+                            <div class="col-md-4 market-update-right ">
+                                <i class="fa fa-4x fa-users " style="color: white !important "></i>
                             </div>
-                            <div class="clearfix"> </div>
+                            <div class="clearfix "> </div>
                         </div>
                     </div>
-                    <div class="col-md-6 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
+                    <div class="col-md-6 market-update-gd ">
+                        <div class="market-update-block clr-block-2 ">
+                            <div class="col-md-8 market-update-left ">
                                 <h3>6</h3>
                                 <h4>Tours</h4>
                             </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
+                            <div class="col-md-4 market-update-right ">
+                                <i class="fa fa-4x fa-suitcase " style="color: white !important "></i>
                             </div>
-                            <div class="clearfix"> </div>
+                            <div class="clearfix "> </div>
                         </div>
                     </div>
-                    <div class="col-md-4 market-update-gd" style="margin-top:2%" ng-repeat="x in myWelcome">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-8 market-update-left">
+                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome ">
+                        <div class="market-update-block clr-block-3 ">
+                            <div class="col-md-8 market-update-left ">
                                 <h3>{{x.name}}</h3>
                                 <h4>{{x.city}}</h4>
                                 <p>{{x.description}}</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger" ng-click="deleteTour(x._id)">Remove</button>
+                                <button class="btn btn-warning ">Edit</button>
+                                <button class="btn btn-danger " ng-click="deleteTour(x._id) ">Remove</button>
                             </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-suitcase" style="color: white !important"></i>
+                            <div class="col-md-4 market-update-right ">
+                                <i class="fa fa-4x fa-suitcase " style="color: white !important "></i>
                             </div>
-                            <div class="clearfix"> </div>
+                            <div class="clearfix "> </div>
                         </div>
                     </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
+                    <div class="clearfix " style="margin-bottom:10px "> </div>
                 </div>
                 <!--market updates end here-->
 
                 <!--copy rights start here-->
-                <div class="copyrights " style="margin-top:10px;">
+                <div class="copyrights " style="margin-top:10px; ">
                     <p>© 2018 BTT. All Rights Reserved | Design by ABU
                     </p>
                 </div>
@@ -138,37 +138,37 @@
             </div>
         </div>
         <!--slider menu-->
-        <div class="sidebar-menu">
-            <div class="menu">
-                <ul id="menu">
-                    <li id="menu-home">
-                        <a href="#!adminPage">
-                            <i class="fa fa-lg fa-suitcase"></i>
+        <div class="sidebar-menu ">
+            <div class="menu ">
+                <ul id="menu ">
+                    <li id="menu-home ">
+                        <a href="#!adminPage ">
+                            <i class="fa fa-lg fa-suitcase "></i>
                             <span>Tours</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!carPage">
-                            <i class="fa fa-lg fa-car"></i>
+                        <a href="#!carPage ">
+                            <i class="fa fa-lg fa-car "></i>
                             <span>Cars</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!employeePage">
-                            <i class="fa fa-lg fa-users"></i>
+                        <a href="#!employeePage ">
+                            <i class="fa fa-lg fa-users "></i>
                             <span>Employees</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!change">
-                            <i class="fa fa-lg fa-cogs"></i>
+                        <a href="#!change ">
+                            <i class="fa fa-lg fa-cogs "></i>
                             <span>Change Password</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix "> </div>
     </div>
 </body>
 
