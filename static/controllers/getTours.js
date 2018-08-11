@@ -1,4 +1,4 @@
-function getTours ($scope, $http) {
+function getTours($scope, $http) {
   var http = function () {
     $http.get('/tours').then(function (response) {
       $scope.myWelcome = response.data
@@ -49,5 +49,14 @@ function getTours ($scope, $http) {
       $scope.tour.tourImage = ''
       http()
     })
+  }
+
+  $scope.collapse = function () {
+    $scope.visible = false;
+    $scope.visible = $scope.visible = true;
+  }
+  $scope.collapse2 = function () {
+    $scope.visible = true;
+    $scope.visible = $scope.visible = false;
   }
 }

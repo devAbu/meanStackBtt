@@ -67,9 +67,9 @@
             <!--inner block start here-->
             <div class="inner-block">
                 <div style="margin-bottom: 20px; margin-left:45%">
-                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;">Add new</button>
+                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="collapse()">Add new</button>
                 </div>
-                <form name="tourForm" novalidate>
+                <form name="tourForm" novalidate ng-show="visible">
                     <div style="margin-bottom: 20px; margin-left:35%">
                         <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="tour.tourName">
                         <br>
@@ -84,8 +84,10 @@
                         <input type="button" value="Add" class="btn btn-success" ng-click="addTour()">
                         <input type="button" value="Update" class="btn btn-warning" ng-click="update()">
                         <input type="reset" value="Cancel" class="btn btn-danger">
+                        <input type="button" value="Close" class="btn btn-dark" ng-click="collapse2()">
                     </div>
                 </form>
+
                 <!--market updates updates-->
                 <div class="market-updates ">
                     <div class="col-md-6 market-update-gd ">
