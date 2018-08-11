@@ -115,7 +115,6 @@ a:hover {
 .page-container.sidebar-collapsed #menu span {
   opacity: 0;
   transition: all 50ms linear;
-  
 }
 
 .page-container.sidebar-collapsed-back #menu span {

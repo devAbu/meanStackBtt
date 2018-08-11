@@ -14,7 +14,6 @@ var urlencodedParser = body_parser.urlencoded({
 
 app.use(express.static(__dirname + '/static'))
 
-
 app.get('/tours', function (req, res) {
   db.tour.find(function (err, docs) {
     console.log(docs)
@@ -22,38 +21,45 @@ app.get('/tours', function (req, res) {
   })
 })
 
-
-
 app.post('/tours', urlencodedParser, function (req, res, next) {
-  /*  var item = {
-     name: req.body.tourName,
-     city: req.body.tourCity,
-     description: req.body.tourDescription,
-     image: req.body.tourImage
-   }
-
-   console.log(item) */
-
   console.log(req.body)
-
 
   db.tour.insert(req.body, function (err, docs) {
     console.log('inserted')
     res.json(docs)
   })
-
 })
 
 app.delete('/deleteTour/:id', function (req, res) {
-  var id = req.params.id;
-  console.log(id);
+  var id = req.params.id
+  console.log(id)
   db.tour.remove({
     _id: mongojs.ObjectId(id)
   }, function (err, doc) {
-    res.json(doc);
-  });
-});
+    res.json(doc)
+  })
+})
 
+app.get('/tours/:id', urlencodedParser, function (req, res) {
+  var id = req.params.id
+  console.log(id)
+  db.tour.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc)
+  })
+})
+
+app.put('/tours/:id', function (req, res) {
+  var id = req.params.id
+  console.log(req.body)
+  db.tour.findAndModify({
+    query: { _id: mongojs.ObjectId(id) },
+    update: { $set: { tourName: req.body.tourName, tourCity: req.body.tourCity, tourDescription: req.body.tourDescription, tourImage: req.body.tourImage } },
+    new: true
+  }, function (err, doc) {
+    res.json(doc)
+  }
+  )
+})
 
 app.listen(port, function () {
   console.log('Node app is running on port', port)

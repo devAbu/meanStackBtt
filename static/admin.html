@@ -15,6 +15,7 @@
     <link href="//fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
 </head>
 
 <body>
@@ -70,18 +71,19 @@
                 </div>
                 <form name="tourForm" novalidate>
                     <div style="margin-bottom: 20px; margin-left:35%">
-                        <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="tour.name">
+                        <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="tour.tourName">
                         <br>
-                        <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px" id="tourCity" name="tourCity" ng-model="tour.city">
+                        <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px" id="tourCity" name="tourCity" ng-model="tour.tourCity">
                         <br>
                         <input type="text" placeholder="Tour description..." class="form-control" style="width: 350px" id="tourDescription" name="tourDescription"
-                            ng-model="tour.description">
+                            ng-model="tour.tourDescription">
                         <br>
                         <input type="text" placeholder="Tour image..." class="form-control" style="width: 350px" id="tourImage" name="tourImage"
-                            ng-model="tour.image">
+                            ng-model="tour.tourImage">
                         <br>
                         <input type="button" value="Add" class="btn btn-success" ng-click="addTour()">
-                        <input type=" reset " value="Cancel " class="btn btn-danger ">
+                        <input type="button" value="Update" class="btn btn-warning" ng-click="update()">
+                        <input type="reset" value="Cancel" class="btn btn-danger">
                     </div>
                 </form>
                 <!--market updates updates-->
@@ -113,10 +115,10 @@
                     <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome ">
                         <div class="market-update-block clr-block-3 ">
                             <div class="col-md-8 market-update-left ">
-                                <h3>{{x.name}}</h3>
-                                <h4>{{x.city}}</h4>
-                                <p>{{x.description}}</p>
-                                <button class="btn btn-warning ">Edit</button>
+                                <h3>{{x.tourName}}</h3>
+                                <h4>{{x.tourCity}}</h4>
+                                <p>{{x.tourDescription}}</p>
+                                <button class="btn btn-warning " ng-click="edit(x._id)">Edit</button>
                                 <button class="btn btn-danger " ng-click="deleteTour(x._id) ">Remove</button>
                             </div>
                             <div class="col-md-4 market-update-right ">
