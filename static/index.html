@@ -14,8 +14,13 @@
     <meta name="keywords" content="btt, bosnian, tourist, travel, agency, arabic, bosna, admin">
     <meta name="description" content="BTT - Bosnian Tourist Travel admin page to add new tour, remove or update existing tour. ">
 
+
+
+
     <script src="controllers/getTours.js"></script>
     <script src="controllers/login.js"></script>
+    <script src="controllers/getCars.js"></script>
+    <script src="controllers/getEmployees.js"></script>
 
     <body ng-app="myApp">
 
@@ -23,6 +28,8 @@
             var app = angular.module("myApp", ["ngRoute"]);
             app.controller('getTours', getTours);
             app.controller('login', login);
+            app.controller('getCars', getCars);
+            app.controller('getEmployees', getEmployees);
 
 
             app.config(function ($routeProvider) {
@@ -44,10 +51,12 @@
                         controller: "getTours"
                     })
                     .when("/carPage", {
-                        templateUrl: "carPage.html"
+                        templateUrl: "carPage.html",
+                        controller: "getCars"
                     })
                     .when("/employeePage", {
-                        templateUrl: "employeePage.html"
+                        templateUrl: "employeePage.html",
+                        controller: "getEmployees"
                     })
                     .when("/change", {
                         templateUrl: "changePass.html"

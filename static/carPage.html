@@ -13,6 +13,9 @@
     <!--Google Fonts-->
     <link href="//fonts.googleapis.com/css?family=Carrois+Gothic" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet" type="text/css">
+
+
+
 </head>
 
 <body>
@@ -48,6 +51,7 @@
                                         <p>Admin name</p>
                                         <span>Administrator</span>
                                     </div>
+
                                 </div>
                             </li>
                         </ul>
@@ -56,84 +60,70 @@
                 </div>
                 <div class="clearfix"> </div>
             </div>
-            <!--heder end here-->
+            <!--header end here-->
+
+
 
             <!--inner block start here-->
             <div class="inner-block">
                 <div style="margin-bottom: 20px; margin-left:45%">
-                    <button class="btn btn-lg btn-success">Add new</button>
+                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="collapse()">Add new</button>
                 </div>
-                <div style="margin-bottom: 20px; margin-left:35%">
-                    <input type="text" placeholder="Car name..." class="form-control" style="width: 350px">
-                    <br>
+                <form name="carForm" novalidate ng-show="visible">
+                    <div style="margin-bottom: 20px; margin-left:35%">
+                        <input type="text" placeholder="Car name..." class="form-control" style="width: 350px" id="carName" name="carName" ng-model="car.carName">
+                        <br>
+                        <input type="text" placeholder="Car model..." class="form-control" style="width: 350px" id="carModel" name="carModel" ng-model="car.carModel">
+                        <br>
+                        <input type="text" placeholder="Car description..." class="form-control" style="width: 350px" id="carDescription" name="carDescription"
+                            ng-model="car.carDescription">
+                        <br>
+                        <input type="text" placeholder="car image..." class="form-control" style="width: 350px" id="carImage" name="carImage"
+                            ng-model="car.carImage">
+                        <br>
+                        <input type="button" value="Add" class="btn btn-success" ng-click="addCar()">
+                        <input type="button" value="Update" class="btn btn-warning" ng-click="update()">
+                        <input type="reset" value="Cancel" class="btn btn-danger">
+                        <input type="button" value="Close" class="btn btn-dark" ng-click="collapse2()">
+                    </div>
+                </form>
 
-                    <input type="button" value="Add" class="btn btn-success">
-                </div>
                 <!--market updates updates-->
-                <div class="market-updates">
-                    <div class="col-md-6 market-update-gd" style="left:25% !important">
+                <div class="market-updates ">
+                    <div class="col-md-12 market-update-gd">
                         <div class="market-update-block clr-block-1">
                             <div class="col-md-8 market-update-left">
-                                <h3>3</h3>
+                                <h3>6</h3>
                                 <h4>Cars</h4>
                             </div>
                             <div class="col-md-4 market-update-right">
-                                <i class="fa fa-lg fa-car fa-4x" style="color: white !important"></i>
+                                <i class="fa fa-4x fa-car" style="color:white !important"></i>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
                     </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Car 1</h3>
-                                <h4>Car name</h4>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
+                    
+                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome ">
+                        <div class="market-update-block clr-block-3 ">
+                            <div class="col-md-8 market-update-left ">
+                                <h3>{{x.carName}}</h3>
+                                <h4>{{x.carModel}}</h4>
+                                <p>{{x.carDescription}}</p>
+                                <button class="btn btn-warning " ng-click="edit(x._id)">Edit</button>
+                                <button class="btn btn-danger " ng-click="deleteCar(x._id) ">Remove</button>
                             </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-lg fa-car fa-4x" style="color: white !important"></i>
+                            <div class="col-md-4 market-update-right ">
+                                <i class="fa fa-4x fa-suitcase " style="color: white !important "></i>
                             </div>
-                            <div class="clearfix"> </div>
+                            <div class="clearfix "> </div>
                         </div>
                     </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Car 2</h3>
-                                <h4>Car name</h4>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-lg fa-car fa-4x" style="color: white !important"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Car 3</h3>
-                                <h4>Car name</h4>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-lg fa-car fa-4x" style="color: white !important"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
-
+                    <div class="clearfix " style="margin-bottom:10px "> </div>
                 </div>
                 <!--market updates end here-->
 
-
                 <!--copy rights start here-->
-                <div class="copyrights " style="margin-top:10px;">
+                <div class="copyrights " style="margin-top:10px; ">
                     <p>© 2018 BTT. All Rights Reserved | Design by ABU
                     </p>
                 </div>
@@ -141,37 +131,37 @@
             </div>
         </div>
         <!--slider menu-->
-        <div class="sidebar-menu">
-            <div class="menu">
-                <ul id="menu">
-                    <li id="menu-home">
-                        <a href="#!adminPage">
-                            <i class="fa fa-tachometer"></i>
+        <div class="sidebar-menu ">
+            <div class="menu ">
+                <ul id="menu ">
+                    <li id="menu-home ">
+                        <a href="#!adminPage ">
+                            <i class="fa fa-lg fa-suitcase "></i>
                             <span>Tours</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!carPage">
-                            <i class="fa fa-lg fa-car"></i>
+                        <a href="#!carPage ">
+                            <i class="fa fa-lg fa-car "></i>
                             <span>Cars</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!employeePage">
-                            <i class="fa fa-lg fa-users"></i>
+                        <a href="#!employeePage ">
+                            <i class="fa fa-lg fa-users "></i>
                             <span>Employees</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!change">
-                            <i class="fa fa-lg fa-cogs"></i>
+                        <a href="#!change ">
+                            <i class="fa fa-lg fa-cogs "></i>
                             <span>Change Password</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix "> </div>
     </div>
 </body>
 

@@ -13,6 +13,9 @@
     <!--Google Fonts-->
     <link href="//fonts.googleapis.com/css?family=Carrois+Gothic" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet" type="text/css">
+
+
+
 </head>
 
 <body>
@@ -48,6 +51,7 @@
                                         <p>Admin name</p>
                                         <span>Administrator</span>
                                     </div>
+
                                 </div>
                             </li>
                         </ul>
@@ -56,133 +60,70 @@
                 </div>
                 <div class="clearfix"> </div>
             </div>
-            <!--heder end here-->
+            <!--header end here-->
+
+
 
             <!--inner block start here-->
             <div class="inner-block">
                 <div style="margin-bottom: 20px; margin-left:45%">
-                    <button class="btn btn-lg btn-success">Add new</button>
+                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="collapse()">Add new</button>
                 </div>
-                <div style="margin-bottom: 20px; margin-left:35%">
-                    <input type="text" placeholder="Employee name..." class="form-control" style="width: 350px">
-                    <br>
-                    <input type="text" placeholder="Employee position..." class="form-control" style="width: 350px">
-                    <br>
-                    <input type="button" value="Add" class="btn btn-success">
-                </div>
+                <form name="employeeForm" novalidate ng-show="visible">
+                    <div style="margin-bottom: 20px; margin-left:35%">
+                        <input type="text" placeholder="Employee name..." class="form-control" style="width: 350px" id="employeeName" name="employeeName" ng-model="employee.employeeName">
+                        <br>
+                        <input type="text" placeholder="Employee age..." class="form-control" style="width: 350px" id="employeeAge" name="employeeAge" ng-model="employee.employeeAge">
+                        <br>
+                        <input type="text" placeholder="Employee position..." class="form-control" style="width: 350px" id="employeePosition" name="employeePosition"
+                            ng-model="employee.employeePosition">
+                        <br>
+                        <input type="text" placeholder="Employee image..." class="form-control" style="width: 350px" id="employeeImage" name="employeeImage"
+                            ng-model="employee.employeeImage">
+                        <br>
+                        <input type="button" value="Add" class="btn btn-success" ng-click="addEmployee()">
+                        <input type="button" value="Update" class="btn btn-warning" ng-click="update()">
+                        <input type="reset" value="Cancel" class="btn btn-danger">
+                        <input type="button" value="Close" class="btn btn-dark" ng-click="collapse2()">
+                    </div>
+                </form>
+
                 <!--market updates updates-->
-                <div class="market-updates">
-                    <div class="col-md-6 market-update-gd" style="left:25% !important">
+                <div class="market-updates ">
+                    <div class="col-md-12 market-update-gd">
                         <div class="market-update-block clr-block-1">
                             <div class="col-md-8 market-update-left">
                                 <h3>6</h3>
                                 <h4>Employees</h4>
                             </div>
                             <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-users" style="color:white !important"></i>
+                                <i class="fa fa-4x fa-user" style="color:white !important"></i>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
                     </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Employee 1</h3>
-                                <h4>Employee name</h4>
-                                <p>Employees position</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
+                    
+                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome ">
+                        <div class="market-update-block clr-block-3 ">
+                            <div class="col-md-8 market-update-left ">
+                                <h3>{{x.employeeName}}</h3>
+                                <h4>{{x.employeeAge}}</h4>
+                                <p>{{x.employeePosition}}</p>
+                                <button class="btn btn-warning " ng-click="edit(x._id)">Edit</button>
+                                <button class="btn btn-danger " ng-click="deleteEmployee(x._id) ">Remove</button>
                             </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-user" style="color:white;"></i>
+                            <div class="col-md-4 market-update-right ">
+                                <img src="{{x.employeeImage}}" alt="{{x.employeeImage}}" >
                             </div>
-                            <div class="clearfix"> </div>
+                            <div class="clearfix "> </div>
                         </div>
                     </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Employee 2</h3>
-                                <h4>Employee name</h4>
-                                <p>Employees position</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-user" style="color:white;"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Employee 3</h3>
-                                <h4>Employee name</h4>
-                                <p>Employees position</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-user" style="color:white;"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-1">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Employee 4</h3>
-                                <h4>Employee name</h4>
-                                <p>Employees position</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-user" style="color:white;"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-2">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Employee 5</h3>
-                                <h4>Employee name</h4>
-                                <p>Employees position</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-user" style="color:white;"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 market-update-gd">
-                        <div class="market-update-block clr-block-3">
-                            <div class="col-md-8 market-update-left">
-                                <h3>Employee 6</h3>
-                                <h4>Employee name</h4>
-                                <p>Employees position</p>
-                                <button class="btn btn-warning">Edit</button>
-                                <button class="btn btn-danger">Remove</button>
-                            </div>
-                            <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-user" style="color:white;"></i>
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    </div>
-                    <div class="clearfix" style="margin-bottom:10px"> </div>
+                    <div class="clearfix " style="margin-bottom:10px "> </div>
                 </div>
                 <!--market updates end here-->
 
-
                 <!--copy rights start here-->
-                <div class="copyrights " style="margin-top:10px;">
+                <div class="copyrights " style="margin-top:10px; ">
                     <p>© 2018 BTT. All Rights Reserved | Design by ABU
                     </p>
                 </div>
@@ -190,37 +131,37 @@
             </div>
         </div>
         <!--slider menu-->
-        <div class="sidebar-menu">
-            <div class="menu">
-                <ul id="menu">
-                    <li id="menu-home">
-                        <a href="#!adminPage">
-                            <i class="fa fa-tachometer"></i>
+        <div class="sidebar-menu ">
+            <div class="menu ">
+                <ul id="menu ">
+                    <li id="menu-home ">
+                        <a href="#!adminPage ">
+                            <i class="fa fa-lg fa-suitcase "></i>
                             <span>Tours</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!carPage">
-                            <i class="fa fa-lg fa-car"></i>
+                        <a href="#!carPage ">
+                            <i class="fa fa-lg fa-car "></i>
                             <span>Cars</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!employeePage">
-                            <i class="fa fa-lg fa-users"></i>
+                        <a href="#!employeePage ">
+                            <i class="fa fa-lg fa-users "></i>
                             <span>Employees</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#!change">
-                            <i class="fa fa-lg fa-cogs"></i>
+                        <a href="#!change ">
+                            <i class="fa fa-lg fa-cogs "></i>
                             <span>Change Password</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix "> </div>
     </div>
 </body>
 
