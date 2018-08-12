@@ -43,7 +43,9 @@ app.delete('/deleteTour/:id', function (req, res) {
 app.get('/tours/:id', urlencodedParser, function (req, res) {
   var id = req.params.id
   console.log(id)
-  db.tour.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  db.tour.findOne({
+    _id: mongojs.ObjectId(id)
+  }, function (err, doc) {
     res.json(doc)
   })
 })
@@ -52,13 +54,21 @@ app.put('/tours/:id', function (req, res) {
   var id = req.params.id
   console.log(req.body)
   db.tour.findAndModify({
-    query: { _id: mongojs.ObjectId(id) },
-    update: { $set: { tourName: req.body.tourName, tourCity: req.body.tourCity, tourDescription: req.body.tourDescription, tourImage: req.body.tourImage } },
+    query: {
+      _id: mongojs.ObjectId(id)
+    },
+    update: {
+      $set: {
+        tourName: req.body.tourName,
+        tourCity: req.body.tourCity,
+        tourDescription: req.body.tourDescription,
+        tourImage: req.body.tourImage
+      }
+    },
     new: true
   }, function (err, doc) {
     res.json(doc)
-  }
-  )
+  })
 })
 
 
@@ -91,7 +101,9 @@ app.delete('/deleteCar/:id', function (req, res) {
 app.get('/cars/:id', urlencodedParser, function (req, res) {
   var id = req.params.id
   console.log(id)
-  db.cars.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  db.cars.findOne({
+    _id: mongojs.ObjectId(id)
+  }, function (err, doc) {
     res.json(doc)
   })
 })
@@ -100,13 +112,21 @@ app.put('/cars/:id', function (req, res) {
   var id = req.params.id
   console.log(req.body)
   db.cars.findAndModify({
-    query: { _id: mongojs.ObjectId(id) },
-    update: { $set: { carName: req.body.carName, carModel: req.body.carModel, carDescription: req.body.carDescription, carImage: req.body.carImage } },
+    query: {
+      _id: mongojs.ObjectId(id)
+    },
+    update: {
+      $set: {
+        carName: req.body.carName,
+        carModel: req.body.carModel,
+        carDescription: req.body.carDescription,
+        carImage: req.body.carImage
+      }
+    },
     new: true
   }, function (err, doc) {
     res.json(doc)
-  }
-  )
+  })
 })
 
 app.get('/employees', function (req, res) {
@@ -138,7 +158,9 @@ app.delete('/deleteEmployee/:id', function (req, res) {
 app.get('/employees/:id', urlencodedParser, function (req, res) {
   var id = req.params.id
   console.log(id)
-  db.employees.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  db.employees.findOne({
+    _id: mongojs.ObjectId(id)
+  }, function (err, doc) {
     res.json(doc)
   })
 })
@@ -147,13 +169,21 @@ app.put('/employees/:id', function (req, res) {
   var id = req.params.id
   console.log(req.body)
   db.employees.findAndModify({
-    query: { _id: mongojs.ObjectId(id) },
-    update: { $set: { employeeName: req.body.employeeName, employeeAge: req.body.employeeAge, employeePosition: req.body.employeePosition, employeeImage: req.body.employeeImage } },
+    query: {
+      _id: mongojs.ObjectId(id)
+    },
+    update: {
+      $set: {
+        employeeName: req.body.employeeName,
+        employeeAge: req.body.employeeAge,
+        employeePosition: req.body.employeePosition,
+        employeeImage: req.body.employeeImage
+      }
+    },
     new: true
   }, function (err, doc) {
     res.json(doc)
-  }
-  )
+  })
 })
 
 app.listen(port, function () {

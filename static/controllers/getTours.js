@@ -1,4 +1,4 @@
-function getTours($scope, $http) {
+function getTours($scope, $http, toastr) {
   var http = function () {
     $http.get('/tours').then(function (response) {
       $scope.myWelcome = response.data
@@ -16,6 +16,7 @@ function getTours($scope, $http) {
       $scope.tour.tourCity = ''
       $scope.tour.tourDescription = ''
       $scope.tour.tourImage = ''
+      toastr.success("Tour added successfully")
       http()
     })
   }
@@ -25,6 +26,7 @@ function getTours($scope, $http) {
     console.log(id)
     $http.delete('/deleteTour/' + id).then(function (response) {
       console.log('removed')
+      toastr.error("Tour removed")
       http()
     })
   }
@@ -47,6 +49,7 @@ function getTours($scope, $http) {
       $scope.tour.tourCity = ''
       $scope.tour.tourDescription = ''
       $scope.tour.tourImage = ''
+      toastr.success("Tour updated successfully")
       http()
     })
   }
