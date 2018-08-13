@@ -65,10 +65,9 @@
 
             <!--inner block start here-->
             <div class="inner-block">
-
-                <div class="popeye-modal-container">
+                <div class="popeye-modal-container" ng-show="visible">
                     <div class="popeye-modal">
-                        <a class="popeye-close-modal" href ng-click="$close()"></a>
+                        <a class="popeye-close-modal" href ng-click="close()"></a>
                         <form name="tourForm" novalidate>
                             <div style="margin-bottom: 20px; margin-left:35%">
                                 <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="tour.tourName">
@@ -92,7 +91,7 @@
                 </div>
 
                 <div style="margin-bottom: 20px; margin-left:45%">
-                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="collapse()">Add new</button>
+                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="open()">Add new</button>
                 </div>
                 <form name="tourForm" novalidate ng-show="visible">
                     <div style="margin-bottom: 20px; margin-left:35%">
@@ -109,7 +108,7 @@
                         <input type="button" value="Add" class="btn btn-success" ng-click="addTour()">
                         <input type="button" value="Update" class="btn btn-warning" ng-click="update()">
                         <input type="reset" value="Cancel" class="btn btn-danger">
-                        <input type="button" value="Close" class="btn btn-dark" ng-click="collapse2()">
+                        <input type="button" value="Close" class="btn btn-dark" ng-click="close()">
                     </div>
                 </form>
 
@@ -145,7 +144,7 @@
                                 <h3>{{x.tourName}}</h3>
                                 <h4>{{x.tourCity}}</h4>
                                 <p>{{x.tourDescription}}</p>
-                                <button class="btn btn-warning " ng-click="edit(x._id)">Edit</button>
+                                <button class="btn btn-warning " ng-click="edit(x._id); open()">Edit</button>
                                 <button class="btn btn-danger " ng-click="deleteTour(x._id) ">Remove</button>
                             </div>
                             <div class="col-md-4 market-update-right ">

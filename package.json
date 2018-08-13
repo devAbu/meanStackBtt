@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/devAbu/meanStackBtt#readme",
   "dependencies": {
+    "angular-animate": "^1.6.9",
     "angular-image-slider": "0.0.8",
     "angular-popeye": "^1.0.5",
     "angular-toastr": "^2.1.1",

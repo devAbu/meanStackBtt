@@ -7,7 +7,7 @@ function getTours($scope, $http, toastr, Popeye) {
 
   http()
 
-  $scope.openUserProfile = function (userId) {
+  /* $scope.openUserProfile = function (userId) {
 
     // Open a modal to show the selected user profile
     var modal = Popeye.openModal({
@@ -28,6 +28,17 @@ function getTours($scope, $http, toastr, Popeye) {
       $scope.updateUser();
     });
   };
+ */
+
+  $scope.open = function () {
+    $scope.visible = false;
+    $scope.visible = $scope.visible = true;
+  }
+
+  $scope.close = function () {
+    $scope.visible = true;
+    $scope.visible = $scope.visible = false;
+  }
 
   $scope.addTour = function () {
     console.log('add tour')
