@@ -36,6 +36,7 @@ app.delete('/deleteTour/:id', function (req, res) {
   db.tour.remove({
     _id: mongojs.ObjectId(id)
   }, function (err, doc) {
+    console.log('removed')
     res.json(doc)
   })
 })
@@ -46,6 +47,7 @@ app.get('/tours/:id', urlencodedParser, function (req, res) {
   db.tour.findOne({
     _id: mongojs.ObjectId(id)
   }, function (err, doc) {
+    console.log('selected')
     res.json(doc)
   })
 })
@@ -67,6 +69,7 @@ app.put('/tours/:id', function (req, res) {
     },
     new: true
   }, function (err, doc) {
+    console.log('updated')
     res.json(doc)
   })
 })
@@ -94,6 +97,7 @@ app.delete('/deleteCar/:id', function (req, res) {
   db.cars.remove({
     _id: mongojs.ObjectId(id)
   }, function (err, doc) {
+    console.log('removed')
     res.json(doc)
   })
 })
@@ -104,6 +108,7 @@ app.get('/cars/:id', urlencodedParser, function (req, res) {
   db.cars.findOne({
     _id: mongojs.ObjectId(id)
   }, function (err, doc) {
+    console.log('selected')
     res.json(doc)
   })
 })
@@ -125,6 +130,7 @@ app.put('/cars/:id', function (req, res) {
     },
     new: true
   }, function (err, doc) {
+    console.log('updated')
     res.json(doc)
   })
 })
@@ -151,6 +157,7 @@ app.delete('/deleteEmployee/:id', function (req, res) {
   db.employees.remove({
     _id: mongojs.ObjectId(id)
   }, function (err, doc) {
+    console.log('removed')
     res.json(doc)
   })
 })
@@ -161,6 +168,7 @@ app.get('/employees/:id', urlencodedParser, function (req, res) {
   db.employees.findOne({
     _id: mongojs.ObjectId(id)
   }, function (err, doc) {
+    console.log('selected')
     res.json(doc)
   })
 })
@@ -182,6 +190,7 @@ app.put('/employees/:id', function (req, res) {
     },
     new: true
   }, function (err, doc) {
+    console.log('updated')
     res.json(doc)
   })
 })
