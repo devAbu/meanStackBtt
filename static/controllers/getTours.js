@@ -1,4 +1,4 @@
-function getTours($scope, $http, toastr) {
+function getTours($scope, $http, toastr, Popeye) {
   var http = function () {
     $http.get('/tours').then(function (response) {
       $scope.myWelcome = response.data
@@ -6,6 +6,28 @@ function getTours($scope, $http, toastr) {
   }
 
   http()
+
+  $scope.openUserProfile = function (userId) {
+
+    // Open a modal to show the selected user profile
+    var modal = Popeye.openModal({
+      controller: "myModalCtrl as ctrl",
+      resolve: {
+        user: function ($http) {
+          return $http.get("/tours");
+        }
+      }
+    });
+
+    $scope.showLoading = true;
+    modal.resolved.then(function () {
+      $scope.showLoading = false;
+    });
+
+    modal.closed.then(function () {
+      $scope.updateUser();
+    });
+  };
 
   $scope.addTour = function () {
     console.log('add tour')

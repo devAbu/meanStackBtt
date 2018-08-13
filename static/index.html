@@ -17,8 +17,8 @@
     <script src="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.tpls.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/angular-toastr@2/dist/angular-toastr.css">
 
-    <script src="path/to/angular-popeye/release/popeye.js"></script>
-    <link rel="stylesheet" href="path/to/angular-popeye/release/popeye.css" />
+    <script src="release/popeye.js"></script>
+    <link rel="stylesheet" href="release/popeye.css" />
 
 
     <script src="controllers/getTours.js"></script>
@@ -29,7 +29,7 @@
     <body ng-app="myApp">
 
         <script>
-            var app = angular.module("myApp", ["ngRoute", "toastr"]);
+            var app = angular.module("myApp", ["ngRoute", "toastr", "pathgather.popeye", "ngAnimate"]); //"pathgather.popeye"
             app.controller('getTours', getTours);
             app.controller('login', login);
             app.controller('getCars', getCars);
