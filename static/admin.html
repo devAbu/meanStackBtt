@@ -70,19 +70,24 @@
                         <a class="popeye-close-modal" href ng-click="close()"></a>
                         <form name="tourForm" novalidate>
                             <div style="margin-bottom: 20px; margin-left:35%">
-                                <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" id="tourName" name="tourName" ng-model="tour.tourName">
+                                <input type="text" placeholder="Tour name..." class="form-control" style="width: 350px" required id="tourName" name="tourName"
+                                    ng-model="tour.tourName">
+                                <span style="color:red" ng-show="tourForm.tourName.$untouched ||tourForm.tourName.$error.required">Tour name is required</span>
                                 <br>
-                                <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px" id="tourCity" name="tourCity" ng-model="tour.tourCity">
+                                <input type="text" placeholder="Tour city..." class="form-control" style="width: 350px" id="tourCity" name="tourCity" ng-model="tour.tourCity" required>
+                                <span style="color:red" ng-show="tourForm.tourCity.$untouched ||tourForm.tourCity.$error.required">Tour city is required</span>
                                 <br>
                                 <input type="text" placeholder="Tour description..." class="form-control" style="width: 350px" id="tourDescription" name="tourDescription"
-                                    ng-model="tour.tourDescription">
+                                    ng-model="tour.tourDescription" required>
+                                <span style="color:red" ng-show="tourForm.tourDescription.$untouched ||tourForm.tourDescription.$error.required">Tour description is required</span>
                                 <br>
                                 <input type="text" placeholder="Tour image..." class="form-control" style="width: 350px" id="tourImage" name="tourImage"
-                                    ng-model="tour.tourImage">
+                                    ng-model="tour.tourImage" required>
+                                <span style="color:red" ng-show="tourForm.tourImage.$untouched ||tourForm.tourImage.$error.required">Tour image is required</span>
                                 <br>
-                                <input type="button" value="Add" class="btn btn-success" ng-click="addTour(); close()">
-                                <input type="button" value="Update" class="btn btn-warning" ng-click="update(); close()">
-                                <input type="reset" value="Cancel" class="btn btn-danger">
+                                <input type="button" value="Add" class="btn btn-success" ng-click="addTour(); close()" ng-disabled="tourForm.tourName.$untouched ||tourForm.tourName.$error.required &&  tourForm.tourName.$dirty || tourForm.tourCity.$untouched || tourForm.tourCity.$error.required &&  tourForm.tourCity.$dirty || tourForm.tourDescription.$untouched || tourForm.tourDescription.$error.required &&  tourForm.tourDescription.$dirty || tourForm.tourImage.$untouched ||tourForm.tourImage.$error.required &&  tourForm.tourImage.$dirty" >
+                                <input type="button" value="Update" class="btn btn-warning" ng-click="update(); close()" ng-disabled="tourForm.tourName.$untouched ||tourForm.tourName.$error.required &&  tourForm.tourName.$dirty || tourForm.tourCity.$untouched || tourForm.tourCity.$error.required &&  tourForm.tourCity.$dirty || tourForm.tourDescription.$untouched || tourForm.tourDescription.$error.required &&  tourForm.tourDescription.$dirty || tourForm.tourImage.$untouched ||tourForm.tourImage.$error.required &&  tourForm.tourImage.$dirty">
+                                <input type="reset" value="Cancel" class="btn btn-danger" ng-disabled="tourForm.tourName.$untouched ||tourForm.tourName.$error.required &&  tourForm.tourName.$dirty && tourForm.tourCity.$untouched || tourForm.tourCity.$error.required &&  tourForm.tourCity.$dirty && tourForm.tourDescription.$untouched || tourForm.tourDescription.$error.required &&  tourForm.tourDescription.$dirty && tourForm.tourImage.$untouched ||tourForm.tourImage.$error.required &&  tourForm.tourImage.$dirty">
                                 <input type="button" value="Close" class="btn btn-dark" ng-click="close()">
                             </div>
                         </form>
