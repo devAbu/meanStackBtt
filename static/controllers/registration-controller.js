@@ -7,9 +7,9 @@ function RegistrationController($scope, $http, toastr, $location){
           console.log(data.status);
           if(data.status == 204){
             toastr.error("Email already exists");
-            $scope.user.name = "";
+          //  $scope.user.name = "";
             $scope.user.email = "";
-            $scope.user.password = "";
+            //$scope.user.password = "";
           } else{
           $scope.user = null;
           toastr.success("You are successfully registered! Please Login!", "Registration Successfull!");

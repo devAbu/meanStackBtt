@@ -34,24 +34,25 @@
     <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form" name="logForm">
                         <span class="login100-form-title p-b-26">
                             Welcome
                         </span>
                         <span class="login100-form-title p-b-48" style="color: rgb(112, 163, 244);">
                             BTT
                         </span>
-
-                        <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-                            <input class="input100" type="text" name="email" ng-model="credentials.email">
+                        <span style="color:red" ng-show="logForm.email.$error.required && logForm.email.$dirty" >Enter your email</span>
+                        <span style="color:red" ng-show=" logForm.email.$error.email">Enter email correctlly</span>
+                        <div class="wrap-input100 validate-input" style="margin-top:5%">
+                            <input class="input100" type="email" name="email" ng-model="credentials.email" required>
                             <span class="focus-input100" data-placeholder="Email"></span>
                         </div>
-
-                        <div class="wrap-input100 validate-input" data-validate="Enter password">
+<span style="color:red" ng-show="logForm.password.$error.required && logForm.password.$dirty " >Create password</span>
+                        <div class="wrap-input100 validate-input" style="margin-top:5%">
                             <span class="btn-show-pass">
                                 <i class="zmdi zmdi-eye" ng-click="change()"></i>
                             </span>
-                            <input class="input100" type="{{text}}" name="pass" ng-model="credentials.password">
+                            <input class="input100" type="{{text}}" name="password" ng-model="credentials.password" required>
                             <span class="focus-input100" data-placeholder="Password"></span>
                         </div>
 
@@ -59,7 +60,7 @@
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
                                 <!-- <a href="#!adminPage" style="text-decoration:none;"> -->
-                                    <button class="login100-form-btn" ng-click="login(credentials)">
+                                    <button class="login100-form-btn" ng-click="login(credentials)" ng-disabled="logForm.$invalid" ng-required="accepted">
                                         Login
                                     </button>
                                 <!-- </a> -->
