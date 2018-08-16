@@ -26,6 +26,7 @@
     <script src="controllers/login.js"></script>
     <script src="controllers/getCars.js"></script>
     <script src="controllers/getEmployees.js"></script>
+    <script src="controllers/registration-controller.js"></script>
 
     <body ng-app="myApp">
 
@@ -35,6 +36,7 @@
             app.controller('login', login);
             app.controller('getCars', getCars);
             app.controller('getEmployees', getEmployees);
+            app.controller('registrationController', RegistrationController);
 
 
             app.config(function ($routeProvider) {
@@ -45,7 +47,7 @@
                     })
                     .when("/register", {
                         templateUrl: "register.html",
-                        controller: "login"
+                        controller : "registrationController"
                     })
                     .when("/userPage", {
                         templateUrl: "user.html",
