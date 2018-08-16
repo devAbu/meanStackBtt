@@ -14,6 +14,13 @@ function getTours($scope, $http, toastr, Popeye) {
       return false;
   }
 
+  $scope.check_admin = function(){
+      if(localStorage.getItem('type') == "admin"){
+          return true;
+      }
+      return false;
+  }
+
   $scope.logout = function(){
         localStorage.clear();
         toastr.info("Successfully logged out!", "Logged Out!");
