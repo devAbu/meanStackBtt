@@ -11,5 +11,3 @@ Project proposal - Admin page for BTT.
 -- User --> able to request tour, he will need to enter his name, email and date of the visit. He will can also review the tour.
 -- User --> Request tour leave feedback.
 --Entities --> Admin, Tours, Feedback, Employees, Cars.
-
-atom test
