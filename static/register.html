@@ -25,25 +25,25 @@
                             <span class="login100-form-title p-b-48" style="color: rgb(112, 163, 244);">
                                 BTT
                             </span>
-        
+
                             <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
                                 <input class="input100" type="text" name="name" ng-model="user.name">
                                 <span class="focus-input100" data-placeholder="Name"></span>
                             </div>
-        
+
                             <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
                                 <input class="input100" type="text" name="email" ng-model="user.email">
                                 <span class="focus-input100" data-placeholder="Email"></span>
                             </div>
-        
+
                             <div class="wrap-input100 validate-input" data-validate="Enter password">
                                 <span class="btn-show-pass">
-                                    <i class="zmdi zmdi-eye" ng-click="eye()"></i>
+                                    <i class="zmdi zmdi-eye" ng-click="change()"></i>
                                 </span>
-                                <input class="input100" type="{{pass}}" name="pass" ng-model="user.password">
+                                <input class="input100" type="{{text}}" name="pass" ng-model="user.password">
                                 <span class="focus-input100" data-placeholder="Password"></span>
                             </div>
-        
+
                             <div class="container-login100-form-btn">
                                 <div class="wrap-login100-form-btn">
                                     <div class="login100-form-bgbtn"></div>
@@ -54,12 +54,12 @@
                                 <!-- </a> -->
                                 </div>
                             </div>
-        
+
                             <div class="text-center p-t-115">
                                 <span class="txt1">
                                     Already has account?
                                 </span>
-        
+
                                 <a class="txt2" href="#/!" style="text-decoration:none;">
                                     Login
                                 </a>
@@ -114,7 +114,7 @@
                    </div>
                  <div class="form-group col-md-6">
                     <label for="confirm_password">Confirm Password</label>
-                    <input type="password" name="password_confirm" ng-model="user.password_confirm" wj-validation-error="user.password_confirm != user.password ? 'Passwords don\'t match' : ''" 
+                    <input type="password" name="password_confirm" ng-model="user.password_confirm" wj-validation-error="user.password_confirm != user.password ? 'Passwords don\'t match' : ''"
                     class="form-control" placeholder="Confirm Password">
                     <span ng-show="register_form.password_confirm.$invalid">Passwords do NOT match.</span>
                    </span>

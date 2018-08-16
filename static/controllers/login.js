@@ -30,4 +30,13 @@ function login($scope, $http, toastr, $location){
             console.log(error);
         }
     }
+
+    $scope.text = "password";
+   $scope.change = function () {
+       if ($scope.text == "password") {
+           $scope.text = "text";
+       } else {
+           $scope.text = "password";
+       }
+     }
 }

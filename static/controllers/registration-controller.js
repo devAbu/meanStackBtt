@@ -9,4 +9,13 @@ function RegistrationController($scope, $http, toastr, $location){
           $scope.users_list.push(data);
         });
       }
+
+      $scope.text = "password";
+      $scope.change = function () {
+       if ($scope.text == "password") {
+           $scope.text = "text";
+       } else {
+           $scope.text = "password";
+       }
+     }
 }
