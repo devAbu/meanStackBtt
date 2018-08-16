@@ -7,7 +7,7 @@ const jwt_admin = 'SJwt25Wq62SFfjiw92sR';
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
-var db = mongojs('localhost:27017/Card', ['user','Kartica'])
+var db = mongojs('localhost:27017/btt', ['tour','users'])
 var port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/static'));
@@ -18,9 +18,9 @@ var urlencodedParser = bodyparser.urlencoded({
 })
 
 app.use('/tour/',function(request,response,next){
-  jwt.verify(request.get('JWT'), jwt_secret, function(error, decoded) {      
+  jwt.verify(request.get('JWT'), jwt_secret, function(error, decoded) {
     if (error) {
-      response.status(401).send('Unauthorized access');    
+      response.status(401).send('Unauthorized access');
     } else {
       db.collection("users").findOne({'_id': new MongoId(decoded._id)}, function(error, user) {
         if (error){
@@ -34,14 +34,14 @@ app.use('/tour/',function(request,response,next){
         }
       });
     }
-  });  
+  });
 })
 
 app.use('/admin/',function(request,response,next){
-  jwt.verify(request.get('JWT'), jwt_admin, function(error, decoded) {     
+  jwt.verify(request.get('JWT'), jwt_admin, function(error, decoded) {
     if (error) {
-      response.status(401).send('Unauthorized access'); 
-      console.log(error);   
+      response.status(401).send('Unauthorized access');
+      console.log(error);
     } else {
       db.collection("users").findOne({'_id': new MongoId(decoded._id)}, function(error, users) {
         if (error){
@@ -55,7 +55,7 @@ app.use('/admin/',function(request,response,next){
         }
       });
     }
-  });  
+  });
 })
 
 app.post('/login', function(req, res) {
@@ -65,7 +65,7 @@ app.post('/login', function(req, res) {
   }, function(error, users) {
       if (error) {
           throw error;
-      } 
+      }
       if(users) {
           bcrypt.compare(user.password, users.password, function(err, resp){
               if(resp === true){

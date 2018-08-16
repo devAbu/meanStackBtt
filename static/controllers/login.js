@@ -21,7 +21,7 @@ function login($scope, $http, toastr, $location){
                 localStorage.setItem('user',response.data.token)
                 localStorage.setItem('type', response.data.type)
                 toastr.success('You are successfully logged in!', 'Login Success!');
-                $location.url('/');
+                $location.url('/userPage');
             }
             else if(response.data.user == false){
                 toastr.error('Login Error');
