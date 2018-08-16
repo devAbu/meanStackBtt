@@ -7,6 +7,18 @@ function getTours($scope, $http, toastr, Popeye) {
 
   http()
 
+  $scope.check_login = function(){
+      if(localStorage.getItem('user')){
+          return true;
+      }
+      return false;
+  }
+
+  $scope.logout = function(){
+        localStorage.clear();
+        toastr.info("Successfully logged out!", "Logged Out!");
+    }
+
   /* $scope.openUserProfile = function (userId) {
 
     // Open a modal to show the selected user profile

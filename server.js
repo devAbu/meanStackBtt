@@ -120,7 +120,7 @@ app.post('/register', function(req, res, next) {
         console.log(result);
 
         if(result.length > 0){
-          console.log('duplicate')
+          res.send(204);
         } else {
           db.collection('users').insert(user, function(err, data) {
               if (err) return console.log(err);

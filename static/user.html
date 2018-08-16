@@ -10,7 +10,8 @@
                 <h3>Bosnian Tourist Travel</h3>
                 <p>A responsive video gallery template with a functional lightbox
                     <br /> designed by abu</p>
-                <a href="#/!" class="button style">Logout</a>
+                <li ng-if="check_login()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></li>
+                <!-- <li ng-if="check_login()"><a style="color:red" href="#" ng-click="logout()" data-hover="Logout">Logout</a></li> -->
             </header>
         </div>
     </section>

@@ -44,7 +44,8 @@
                             <li class="profile_details_drop">
                                 <div class="profile_img">
                                     <p>
-                                        <a href="#/!">Logout</a>
+                                        <!-- <a href="#/!">Logout</a> -->
+                                        <span ng-if="check_admin()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></span>
                                     </p>
                                     <div class="user-name">
                                         <p>Admin name</p>

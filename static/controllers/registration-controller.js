@@ -4,10 +4,18 @@ function RegistrationController($scope, $http, toastr, $location){
 
     $scope.add_user = function(){
         $http.post('/register', $scope.user).then(function(data){
+          console.log(data.status);
+          if(data.status == 204){
+            toastr.error("Email already exists");
+            $scope.user.name = "";
+            $scope.user.email = "";
+            $scope.user.password = "";
+          } else{
           $scope.user = null;
           toastr.success("You are successfully registered! Please Login!", "Registration Successfull!");
           $location.url('/');
           //$scope.users_list.push(data);
+          }
         });
       }
 
