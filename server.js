@@ -7,6 +7,7 @@ const jwt_admin = 'SJwt25Wq62SFfjiw92sR';
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
+// var MongoId = require('mongodb').ObjectID;
 var db = mongojs('localhost:27017/btt', ['tour','users'])
 var port = process.env.PORT || 3000
 
@@ -17,12 +18,12 @@ var urlencodedParser = bodyparser.urlencoded({
   extended: false
 })
 
-app.use('/tour/',function(request,response,next){
+app.use('/check/',function(request,response,next){
   jwt.verify(request.get('JWT'), jwt_secret, function(error, decoded) {
     if (error) {
       response.status(401).send('Unauthorized access');
     } else {
-      db.collection("users").findOne({'_id': new MongoId(decoded._id)}, function(error, user) {
+      db.users.findOne({'_id': new mongojs.ObjectId(decoded._id)}, function(error, user) {
         if (error){
           throw error;
         }else{
@@ -43,7 +44,7 @@ app.use('/admin/',function(request,response,next){
       response.status(401).send('Unauthorized access');
       console.log(error);
     } else {
-      db.collection("users").findOne({'_id': new MongoId(decoded._id)}, function(error, users) {
+      db.users.findOne({'_id': new mongojs.ObjectId(decoded._id)}, function(error, users) {
         if (error){
           throw error;
         }else{
@@ -60,7 +61,7 @@ app.use('/admin/',function(request,response,next){
 
 app.post('/login', function(req, res) {
   var user = req.body;
-  db.collection('users').findOne({
+  db.users.findOne({
       'email': user.email,
   }, function(error, users) {
       if (error) {
@@ -70,6 +71,7 @@ app.post('/login', function(req, res) {
           bcrypt.compare(user.password, users.password, function(err, resp){
               if(resp === true){
                   if(users.type == "admin"){
+                    users.password = null;
                       var token = jwt.sign(users, jwt_admin, {
                           expiresIn: 60*60*24
                       });
@@ -82,6 +84,7 @@ app.post('/login', function(req, res) {
                       console.log("Admin authentication passed.");
                   }
                   else if(users.type == "user"){
+                    users.password = null;
                       var token = jwt.sign(users, jwt_secret, {
                           expiresIn: 60*60*24
                       });
@@ -112,7 +115,7 @@ app.post('/register', function(req, res, next) {
   console.log(find);
   bcrypt.hash(user.password, 10, function(err, hash) {
       user.password = hash;
-      db.collection('users').find({
+      db.users.find({
         email : find
       }).toArray(function (err,result){
         if(err) throw err;
@@ -122,27 +125,33 @@ app.post('/register', function(req, res, next) {
         if(result.length > 0){
           res.sendStatus(204);
         } else {
-          db.collection('users').insert(user, function(err, data) {
+          db.users.insert(user, function(err, data) {
               if (err) return console.log(err);
               res.setHeader('Content-Type', 'application/json');
               res.send(user);
           })
         }
       })
-
   })
 });
 
 
 
-app.get('/tours', function (req, res) {
+app.get('/admin/tours', function (req, res) {
   db.tour.find(function (err, docs) {
     console.log(docs)
     res.json(docs)
   })
 })
 
-app.post('/tours', urlencodedParser, function (req, res, next) {
+app.get('/check/tours', function (req, res) {
+  db.tour.find(function (err, docs) {
+    console.log(docs)
+    res.json(docs)
+  })
+})
+
+app.post('/admin/tours', urlencodedParser, function (req, res, next) {
   console.log(req.body)
 
   db.tour.insert(req.body, function (err, docs) {
@@ -151,7 +160,7 @@ app.post('/tours', urlencodedParser, function (req, res, next) {
   })
 })
 
-app.delete('/deleteTour/:id', function (req, res) {
+app.delete('/admin/deleteTour/:id', function (req, res) {
   var id = req.params.id
   console.log(id)
   db.tour.remove({
@@ -162,7 +171,7 @@ app.delete('/deleteTour/:id', function (req, res) {
   })
 })
 
-app.get('/tours/:id', urlencodedParser, function (req, res) {
+app.get('/admin/tours/:id', urlencodedParser, function (req, res) {
   var id = req.params.id
   console.log(id)
   db.tour.findOne({
@@ -173,7 +182,7 @@ app.get('/tours/:id', urlencodedParser, function (req, res) {
   })
 })
 
-app.put('/tours/:id', function (req, res) {
+app.put('/admin/tours/:id', function (req, res) {
   var id = req.params.id
   console.log(req.body)
   db.tour.findAndModify({
