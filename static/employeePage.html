@@ -47,7 +47,7 @@
                                     <p>
                                     <span ng-if="check_admin()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></span>
                                     </p>
-                                    <div class="user-name">
+                                    <div class="user-name" ng-if="check_admin()">
                                         <p>Admin name</p>
                                         <span>Administrator</span>
                                     </div>
@@ -67,7 +67,7 @@
             <!--inner block start here-->
             <div class="inner-block">
                 <div style="margin-bottom: 20px; margin-left:45%">
-                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="open()">Add new</button>
+                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="open()" ng-if="check_admin()">Add new</button>
                 </div>
                 <div class="popeye-modal-container" ng-show="visible">
                     <div class="popeye-modal">
@@ -98,7 +98,7 @@
 
                 <!--market updates updates-->
                 <div class="market-updates ">
-                    <div class="col-md-12 market-update-gd">
+                    <div class="col-md-12 market-update-gd" ng-if="check_admin()">
                         <div class="market-update-block clr-block-1">
                             <div class="col-md-8 market-update-left">
                                 <h3>6</h3>
