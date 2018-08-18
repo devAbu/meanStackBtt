@@ -10,7 +10,7 @@ var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
 //var db = mongojs('localhost:27017/btt', ['tour','users'])
 
-var db = mongodb:devAbu:aburefko159753@ds125372.mlab.com:25372/btt2
+var db = mongojs(process.env.MONGOLAB_URI || mongodb:devAbu:aburefko159753@ds125372.mlab.com:25372/btt2)
 var port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/static'));
