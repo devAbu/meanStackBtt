@@ -24,8 +24,8 @@ function getEmployees($scope, $http, toastr, Popeye) {
   if(localStorage.getItem('type') == "admin"){
     console.log('juhu')
       http()
-  } else if(localStorage.getItem('type') == 'user'){
-    httpUser();
+  }  else {
+    toastr.error("You can not see info about our employees!!!")
   }
 
   $scope.check_login = function(){

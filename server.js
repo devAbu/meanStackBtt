@@ -208,14 +208,14 @@ app.put('/admin/tours/:id', function (req, res) {
 })
 
 
-app.get('/cars', function (req, res) {
+app.get('/admin/cars', function (req, res) {
   db.cars.find(function (err, docs) {
     console.log(docs)
     res.json(docs)
   })
 })
 
-app.post('/cars', urlencodedParser, function (req, res, next) {
+app.post('/admin/cars', urlencodedParser, function (req, res, next) {
   console.log(req.body)
 
   db.cars.insert(req.body, function (err, docs) {
@@ -224,7 +224,7 @@ app.post('/cars', urlencodedParser, function (req, res, next) {
   })
 })
 
-app.delete('/deleteCar/:id', function (req, res) {
+app.delete('/admin/deleteCars/:id', function (req, res) {
   var id = req.params.id
   console.log(id)
   db.cars.remove({
@@ -235,7 +235,7 @@ app.delete('/deleteCar/:id', function (req, res) {
   })
 })
 
-app.get('/cars/:id', urlencodedParser, function (req, res) {
+app.get('/admin/cars/:id', urlencodedParser, function (req, res) {
   var id = req.params.id
   console.log(id)
   db.cars.findOne({
@@ -246,7 +246,7 @@ app.get('/cars/:id', urlencodedParser, function (req, res) {
   })
 })
 
-app.put('/cars/:id', function (req, res) {
+app.put('/admin/cars/:id', function (req, res) {
   var id = req.params.id
   console.log(req.body)
   db.cars.findAndModify({

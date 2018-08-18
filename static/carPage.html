@@ -45,7 +45,7 @@
                             <li class="profile_details_drop">
                                 <div class="profile_img">
                                     <p>
-                                        <a href="#/!">Logout</a>
+                                        <span ng-if="check_admin()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></span>
                                     </p>
                                     <div class="user-name">
                                         <p>Admin name</p>
@@ -67,27 +67,35 @@
             <!--inner block start here-->
             <div class="inner-block">
                 <div style="margin-bottom: 20px; margin-left:45%">
-                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="collapse()">Add new</button>
+                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="open()">Add new</button>
                 </div>
-                <form name="carForm" novalidate ng-show="visible">
-                    <div style="margin-bottom: 20px; margin-left:35%">
-                        <input type="text" placeholder="Car name..." class="form-control" style="width: 350px" id="carName" name="carName" ng-model="car.carName">
-                        <br>
-                        <input type="text" placeholder="Car model..." class="form-control" style="width: 350px" id="carModel" name="carModel" ng-model="car.carModel">
-                        <br>
-                        <input type="text" placeholder="Car description..." class="form-control" style="width: 350px" id="carDescription" name="carDescription"
-                            ng-model="car.carDescription">
-                        <br>
-                        <input type="text" placeholder="car image..." class="form-control" style="width: 350px" id="carImage" name="carImage"
-                            ng-model="car.carImage">
-                        <br>
-                        <input type="button" value="Add" class="btn btn-success" ng-click="addCar()">
-                        <input type="button" value="Update" class="btn btn-warning" ng-click="update()">
-                        <input type="reset" value="Cancel" class="btn btn-danger">
-                        <input type="button" value="Close" class="btn btn-dark" ng-click="collapse2()">
-                    </div>
-                </form>
+                <div class="popeye-modal-container" ng-show="visible">
+                    <div class="popeye-modal">
+                        <a class="popeye-close-modal" href ng-click="close()"></a>
+                          <form name="carForm" novalidate ng-show="visible">
+                              <div style="margin-bottom: 20px; margin-left:35%">
+                                  <input type="text" placeholder="Car name..." class="form-control" required style="width: 350px" id="carName" name="carName" ng-model="car.carName">
+<span style="color:red" ng-show="carForm.carName.$untouched ||carForm.carName.$error.required">Car name is required</span>
+                                  <br>
+                                  <input type="text" placeholder="Car model..." class="form-control" required style="width: 350px" id="carModel" name="carModel" ng-model="car.carModel">
+<span style="color:red" ng-show="carForm.carModel.$untouched ||carForm.carModel.$error.required">Car model is required</span>
+                                  <br>
+                                  <input type="text" placeholder="Car description..." class="form-control" required style="width: 350px" id="carDescription" name="carDescription"
+                                      ng-model="car.carDescription">
+                                      <span style="color:red" ng-show="carForm.carDescription.$untouched ||carForm.carDescription.$error.required">Car description is required</span>
+                                  <br>
+                                  <input type="text" placeholder="car image..." class="form-control" required style="width: 350px" id="carImage" name="carImage"
+                                      ng-model="car.carImage">
+                                      <span style="color:red" ng-show="carForm.carImage.$untouched ||carForm.carImage.$error.required">Car image is required</span>
 
+                                  <br>
+                                  <input type="button" value="Add" class="btn btn-success" ng-click="addCar(); close()" ng-disabled="carForm.carName.$untouched ||carForm.carName.$error.required &&  carForm.carName.$dirty || carForm.carModel.$untouched || carForm.carModel.$error.required &&  carForm.carModel.$dirty || carForm.carDescription.$untouched || carForm.carDescription.$error.required &&  carForm.carDescription.$dirty || carForm.carImage.$untouched ||carForm.carImage.$error.required &&  carForm.carImage.$dirty">
+                                  <input type="button" value="Update" class="btn btn-warning" ng-click="update(); close()" ng-disabled="carForm.carName.$untouched ||carForm.carName.$error.required &&  carForm.carName.$dirty || carForm.carModel.$untouched || carForm.carModel.$error.required &&  carForm.carModel.$dirty || carForm.carDescription.$untouched || carForm.carDescription.$error.required &&  carForm.carDescription.$dirty || carForm.carImage.$untouched ||carForm.carImage.$error.required &&  carForm.carImage.$dirty">
+                                  <input type="button" value="Close" class="btn btn-dark" ng-click="close()">
+                              </div>
+                          </form>
+                        </div>
+                    </div>
                 <!--market updates updates-->
                 <div class="market-updates ">
                     <div class="col-md-12 market-update-gd">
@@ -102,14 +110,14 @@
                             <div class="clearfix"> </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome ">
                         <div class="market-update-block clr-block-3 ">
                             <div class="col-md-8 market-update-left ">
                                 <h3>{{x.carName}}</h3>
                                 <h4>{{x.carModel}}</h4>
                                 <p>{{x.carDescription}}</p>
-                                <button class="btn btn-warning " ng-click="edit(x._id)">Edit</button>
+                                <button class="btn btn-warning " ng-click="edit(x._id); open()">Edit</button>
                                 <button class="btn btn-danger " ng-click="deleteCar(x._id) ">Remove</button>
                             </div>
                             <div class="col-md-4 market-update-right ">
