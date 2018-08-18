@@ -71,7 +71,7 @@ app.post('/login', function(req, res) {
       }
       if(users) {
           //bcrypt.compare(user.password, users.password, function(err, resp){
-              if(resp === true){
+              if(user.password === users.password){
                   if(users.type == "admin"){
                     users.password = null;
                       var token = jwt.sign(users, jwt_admin, {
