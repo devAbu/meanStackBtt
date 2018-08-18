@@ -4,13 +4,13 @@ const app = express();
 const jwt_secret = 'WU5CjF8fHxG40S2t7oyk';
 const jwt_admin = 'SJwt25Wq62SFfjiw92sR';
 
-//var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
-//var db = mongojs('localhost:27017/btt', ['tour','users'])
+var db = mongojs('localhost:27017/btt', ['tour','users'])
 //var db = mongojs(process.env.MONGOLAB_URI || 'localhost:27017/btt', ['tour','users'])
-var db = mongojs(process.env.MONGODB_URI || 'mongodb://devAbu:aburefko159753@ds125372.mlab.com:25372/btt2')
+//var db = mongojs(process.env.MONGODB_URI || 'mongodb://devAbu:aburefko..159753@ds125372.mlab.com:25372/btt2')
 var port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/static'));
@@ -45,6 +45,7 @@ app.use('/admin/',function(request,response,next){
     if (error) {
       response.status(401).send('Unauthorized access');
       console.log(error);
+
     } else {
       db.users.findOne({'_id': new mongojs.ObjectId(decoded._id)}, function(error, users) {
         if (error){
@@ -70,8 +71,8 @@ app.post('/login', function(req, res) {
           throw error;
       }
       if(users) {
-          //bcrypt.compare(user.password, users.password, function(err, resp){
-              if(user.password === users.password){
+          bcrypt.compare(user.password, users.password, function(err, resp){
+              if(resp === true){
                   if(users.type == "admin"){
                     users.password = null;
                       var token = jwt.sign(users, jwt_admin, {
@@ -104,7 +105,7 @@ app.post('/login', function(req, res) {
                       user : false
                   })
               }
-          //})
+          })
       }
   });
 });
@@ -115,8 +116,8 @@ app.post('/register', function(req, res, next) {
   var user = req.body;
   var find = req.body.email;
   console.log(find);
-  //bcrypt.hash(user.password, 10, function(err, hash) {
-      //user.password = hash;
+  bcrypt.hash(user.password, 10, function(err, hash) {
+      user.password = hash;
       db.users.find({
         email : find
       }).toArray(function (err,result){
@@ -134,7 +135,7 @@ app.post('/register', function(req, res, next) {
           })
         }
       })
-  //})
+  })
 });
 
 
@@ -267,14 +268,14 @@ app.put('/cars/:id', function (req, res) {
   })
 })
 
-app.get('/employees', function (req, res) {
+app.get('/admin/employees', function (req, res) {
   db.employees.find(function (err, docs) {
     console.log(docs)
     res.json(docs)
   })
 })
 
-app.post('/employees', urlencodedParser, function (req, res, next) {
+app.post('/admin/employees', urlencodedParser, function (req, res, next) {
   console.log(req.body)
 
   db.employees.insert(req.body, function (err, docs) {
@@ -283,7 +284,7 @@ app.post('/employees', urlencodedParser, function (req, res, next) {
   })
 })
 
-app.delete('/deleteEmployee/:id', function (req, res) {
+app.delete('/admin/deleteEmployees/:id', function (req, res) {
   var id = req.params.id
   console.log(id)
   db.employees.remove({
@@ -294,7 +295,7 @@ app.delete('/deleteEmployee/:id', function (req, res) {
   })
 })
 
-app.get('/employees/:id', urlencodedParser, function (req, res) {
+app.get('/admin/employees/:id', urlencodedParser, function (req, res) {
   var id = req.params.id
   console.log(id)
   db.employees.findOne({
@@ -305,7 +306,7 @@ app.get('/employees/:id', urlencodedParser, function (req, res) {
   })
 })
 
-app.put('/employees/:id', function (req, res) {
+app.put('/admin/employees/:id', function (req, res) {
   var id = req.params.id
   console.log(req.body)
   db.employees.findAndModify({

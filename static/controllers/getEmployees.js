@@ -1,62 +1,117 @@
-function getEmployees($scope, $http) {
-    var http = function () {
-        $http.get('/employees').then(function (response) {
-            $scope.myWelcome = response.data
-        })
+function getEmployees($scope, $http, toastr, Popeye) {
+  var config = {headers:  {
+   'Authorization': 'Basic TmljayBDZXJtaW5hcmE6cGFzc3dvcmQ=',
+   'Accept': 'application/json;odata=verbose',
+   "JWT" : localStorage.getItem('user')
+   }
+};
+
+  console.log(localStorage.getItem('user'))
+  console.log(localStorage.getItem('type'))
+
+  var http = function () {
+    $http.get('/admin/employees', config).then(function (response) {
+      $scope.myWelcome = response.data
+    })
+  }
+
+  var httpUser = function () {
+    $http.get('/check/employees', config).then(function (response) {
+      $scope.myWelcome = response.data
+    })
+  }
+
+  if(localStorage.getItem('type') == "admin"){
+    console.log('juhu')
+      http()
+  } else if(localStorage.getItem('type') == 'user'){
+    httpUser();
+  }
+
+  $scope.check_login = function(){
+      if(localStorage.getItem('user')){
+          return true;
+      }
+      return false;
+  }
+
+  $scope.check_admin = function(){
+      if(localStorage.getItem('type') == "admin"){
+          return true;
+      }
+      return false;
+  }
+
+  $scope.logout = function(){
+        localStorage.clear();
+        toastr.info("Successfully logged out!", "Logged Out!");
     }
 
-    http()
+  $scope.open = function () {
+    $scope.visible = false;
+    $scope.visible = $scope.visible = true;
+  }
 
-    $scope.addEmployee = function () {
-        console.log('add employee')
-        console.log($scope.employee)
-        $http.post('/employees', $scope.employee).then(function (response) {
-            console.log(response)
-            $scope.employee.employeeName = ''
-            $scope.employee.employeeAge = ''
-            $scope.employee.employeePosition = ''
-            $scope.employee.employeeImage = ''
-            http()
-        })
-    }
+  $scope.close = function () {
+    $scope.visible = true;
+    $scope.visible = $scope.visible = false;
+  }
 
-    $scope.deleteEmployee = function (id) {
-        console.log('delete employee')
-        console.log(id)
-        $http.delete('/deleteEmployee/' + id).then(function (response) {
-            console.log('removed')
-            http()
-        })
-    }
+  $scope.addEmployee = function () {
+    console.log('add employees')
+    console.log($scope.employee)
+    $http.post('/admin/employees', $scope.employee,config).then(function (response) {
+      console.log(response)
+      $scope.employee.employeeName = ''
+      $scope.employee.employeeAge = ''
+      $scope.employee.employeePosition = ''
+      $scope.employee.employeeImage = ''
+        toastr.success("employees added successfully")
 
-    $scope.edit = function (id) {
-        console.log('select employee')
-        console.log(id)
-        $http.get('/employees/' + id).then(function (response) {
-            console.log('selected')
-            $scope.employee = response.data
-        })
-    }
+      http()
+    })
 
-    $scope.update = function () {
-        console.log('update employee')
-        console.log($scope.employee._id)
-        $http.put('/employees/' + $scope.employee._id, $scope.employee).then(function (response) {
-            console.log('update')
-            $scope.employee.employeeName = ''
-            $scope.employee.employeeAge = ''
-            $scope.employee.employeePosition = ''
-            $scope.employee.employeeImage = ''
-            http()
-        })
-    }
+  }
 
-    $scope.collapse = function () {
-        $scope.visible = false;
-        $scope.visible = $scope.visible = true;
-    }
-    $scope.collapse2 = function () {
-        $scope.visible = true;
-        $scope.visible = $scope.visible = false;
-    }
+  $scope.deleteEmployee = function (id) {
+    console.log('delete employees')
+    console.log(id)
+    $http.delete('/admin/deleteEmployees/' + id, config).then(function (response) {
+      console.log('removed')
+      toastr.error("employees removed")
+      http()
+    })
+  }
+
+  $scope.edit = function (id) {
+    console.log('select employees')
+    console.log(id)
+    $http.get('/admin/employees/' + id, config).then(function (response) {
+      console.log('selected')
+      $scope.employee = response.data
+    })
+  }
+
+  $scope.update = function () {
+    console.log('update employees')
+    console.log($scope.employee._id)
+    $http.put('/admin/employees/' + $scope.employee._id, $scope.employee, config).then(function (response) {
+      console.log('update')
+      $scope.employee.employeeName = ''
+      $scope.employee.employeeAge = ''
+      $scope.employee.employeePosition = ''
+      $scope.employee.employeeImage = ''
+      toastr.success("employees updated successfully")
+      http()
+    })
+  }
+
+  $scope.collapse = function () {
+    $scope.visible = false;
+    $scope.visible = $scope.visible = true;
+  }
+  $scope.collapse2 = function () {
+    $scope.visible = true;
+    $scope.visible = $scope.visible = false;
+  }
 }

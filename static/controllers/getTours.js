@@ -20,14 +20,13 @@ function getTours($scope, $http, toastr, Popeye) {
       $scope.myWelcome = response.data
     })
   }
-  
+
   if(localStorage.getItem('type') == "admin"){
     console.log('juhu')
       http()
+  } else if(localStorage.getItem('type') == 'user'){
+    httpUser();
   }
-
-
-
 
   $scope.check_login = function(){
       if(localStorage.getItem('user')){
@@ -67,9 +66,11 @@ function getTours($scope, $http, toastr, Popeye) {
       $scope.tour.tourCity = ''
       $scope.tour.tourDescription = ''
       $scope.tour.tourImage = ''
-      toastr.success("Tour added successfully")
+        toastr.success("Tour added successfully")
+
       http()
     })
+
   }
 
   $scope.deleteTour = function (id) {
