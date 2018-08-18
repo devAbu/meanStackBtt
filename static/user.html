@@ -33,12 +33,19 @@
                         <a class="button style2 fit" ng-click="collapse()">Request</a>
                         <a class="button style fit" ng-click="collapse3()" >Leave feedback</a>
                         <section ng-show="visible">
-                            <input type="email" placeholder="Email..." style="margin-bottom:10px;">
-                            <input type="button" value="Send request" ng-click="collapse2()">
+                          <form name="tourReq">
+                            <input type="email" placeholder="Email..." style="margin-bottom:10px;" required id="email" name="email" ng-model="tour.email">
+                            <span style="color:red" ng-show="tourReq.email.$error.required">Please enter your email</span>
+                            <span style="color:red" ng-show="tourReq.email.$error.email">Please enter your email correctly</span>
+                            <input type="button" value="Send request" ng-click="collapse2()" ng-disabled="tourReq.$invalid">
+                          </form>
                         </section>
                         <section ng-show="visible2">
-                            <textarea style="resize:none;margin-bottom:10px;" placeholder="Feedback..."></textarea>
-                            <input type="button" value="Send feedack" ng-click="collapse4()">
+                          <form name="tourForm">
+                            <textarea style="resize:none;margin-bottom:10px;" placeholder="Feedback..." required id="tourFeedback" name="tourFeedback" ng-model="tour.tourFeedback" ></textarea>
+                            <span style="color:red" ng-show="tourForm.tourFeedback.$untouched ||tourForm.tourFeedback.$error.required">Please write your opinion</span>
+                            <input type="button" value="Send feedack" ng-click="collapse4()" ng-disabled="tourForm.$invalid">
+                          </form>
                         </section>
                     </div>
                 </div>
@@ -50,7 +57,10 @@
         <legend>
             Feedback:
         </legend>
-        <textarea rows="3" placeholder="Leave your feedback..." class="mb-3" style="font-size: 25px; resize: none; margin-bottom:5px;"></textarea>
-        <button class=" button style" style="width:100%">Send feedback</button>
+        <form name="appForm">
+          <textarea rows="3" placeholder="Leave your feedback..." class="mb-3" id="appFeedback" required name="appFeedback" ng-model="tour.appFeedback" style="font-size: 25px; resize: none; margin-bottom:5px;"></textarea>
+          <span style="color:red" ng-show="appForm.appFeedback.$untouched ||appForm.appFeedback.$error.required">Please write your opinion</span>
+          <button class=" button style" style="width:100%" ng-disabled="appForm.$invalid">Send feedback</button>
+        </form>
 
     </footer>
