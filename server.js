@@ -9,8 +9,8 @@ var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
 //var db = mongojs('localhost:27017/btt', ['tour','users'])
-var db = mongojs(process.env.MONGOLAB_URI || 'localhost:27017/btt', ['tour','users'])
-// var db = mongojs(process.env.MONGODB_URI || 'mongodb://devAbu:aburefko..159753@ds125372.mlab.com:25372/btt2')
+//var db = mongojs(process.env.MONGOLAB_URI || 'localhost:27017/btt', ['tour','users'])
+var db = mongojs(process.env.MONGODB_URI || 'mongodb://devAbu:aburefko..159753@ds125372.mlab.com:25372/btt2')
 var port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/static'));
@@ -71,6 +71,7 @@ app.post('/login', function(req, res) {
       }
       if(users) {
           //bcrypt.compare(user.password, users.password, function(err, resp){
+          if(user.password == users.password){
               if(resp === true){
                   if(users.type == "admin"){
                     users.password = null;
@@ -105,6 +106,7 @@ app.post('/login', function(req, res) {
                   })
               }
           //})
+        }
       }
   });
 });
@@ -116,7 +118,7 @@ app.post('/register', function(req, res, next) {
   var find = req.body.email;
   console.log(find);
   //bcrypt.hash(user.password, 10, function(err, hash) {
-      user.password = hash;
+      //user.password = hash;
       db.users.find({
         email : find
       }).toArray(function (err,result){
