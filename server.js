@@ -71,7 +71,6 @@ app.post('/login', function(req, res) {
       }
       if(users) {
           //bcrypt.compare(user.password, users.password, function(err, resp){
-          if(user.password == users.password){
               if(resp === true){
                   if(users.type == "admin"){
                     users.password = null;
@@ -106,7 +105,6 @@ app.post('/login', function(req, res) {
                   })
               }
           //})
-        }
       }
   });
 });
