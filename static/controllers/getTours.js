@@ -114,4 +114,13 @@ function getTours($scope, $http, toastr, Popeye) {
     $scope.visible = true;
     $scope.visible = $scope.visible = false;
   }
+
+  $scope.collapse3 = function () {
+    $scope.visible2 = false;
+    $scope.visible2 = $scope.visible2 = true;
+  }
+  $scope.collapse4 = function () {
+    $scope.visible2 = true;
+    $scope.visible2 = $scope.visible2 = false;
+  }
 }
