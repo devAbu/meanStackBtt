@@ -14,6 +14,7 @@ var db = mongojs(process.env.MONGODB_URI || 'mongodb://devAbu:aburefko..159753@d
 var port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/static'));
+app.use(express.json()); // to support JSON-encoded bodies
 app.use(bodyparser.json());
 var urlencodedParser = bodyparser.urlencoded({
   extended: false
@@ -70,7 +71,7 @@ app.post('/login', function(req, res) {
       }
       if(users) {
           //bcrypt.compare(user.password, users.password, function(err, resp){
-            //  if(resp === true){
+              if(resp === true){
                   if(users.type == "admin"){
                     users.password = null;
                       var token = jwt.sign(users, jwt_admin, {
@@ -97,12 +98,12 @@ app.post('/login', function(req, res) {
                       })
                       console.log("Authentication passed.");
                   }
-              //}
-              // else {
-              //     res.send({
-              //         user : false
-              //     })
-              // }
+              }
+              else {
+                  res.send({
+                      user : false
+                  })
+              }
           //})
       }
   });
