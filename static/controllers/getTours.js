@@ -15,17 +15,18 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
-  var http = function () {
+  var httpUser = function () {
     $http.get('/check/tours', config).then(function (response) {
       $scope.myWelcome = response.data
     })
   }
-  // if(localStorage.getItem('type') == "admin"){
-  //   console.log('juhu')
-  //     http()
-  // }
+  
+  if(localStorage.getItem('type') == "admin"){
+    console.log('juhu')
+      http()
+  }
 
-  http()
+
 
 
   $scope.check_login = function(){

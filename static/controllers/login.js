@@ -15,6 +15,12 @@ function login($scope, $http, toastr, $location){
         return false;
     }
 
+    var http = function () {
+      $http.get('/admin/tours', config).then(function (response) {
+        $scope.myWelcome = response.data
+      })
+    }
+
     $scope.login = function(credentials){
         $http.post('/login', credentials).then(function(response){
             if(typeof response.data.token != 'undefined'){
@@ -25,6 +31,7 @@ function login($scope, $http, toastr, $location){
                     $location.url('/userPage');
                 } else if(localStorage.getItem('type') == "admin"){
                     $location.url('/adminPage');
+                    http()
                 }
 
             }

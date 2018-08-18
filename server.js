@@ -4,11 +4,13 @@ const app = express();
 const jwt_secret = 'WU5CjF8fHxG40S2t7oyk';
 const jwt_admin = 'SJwt25Wq62SFfjiw92sR';
 
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
-var db = mongojs('localhost:27017/btt', ['tour','users'])
+//var db = mongojs('localhost:27017/btt', ['tour','users'])
+
+var db = mongodb:devAbu:aburefko159753@ds125372.mlab.com:25372/btt2
 var port = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/static'));
@@ -68,7 +70,7 @@ app.post('/login', function(req, res) {
           throw error;
       }
       if(users) {
-          bcrypt.compare(user.password, users.password, function(err, resp){
+          //bcrypt.compare(user.password, users.password, function(err, resp){
               if(resp === true){
                   if(users.type == "admin"){
                     users.password = null;
@@ -102,7 +104,7 @@ app.post('/login', function(req, res) {
                       user : false
                   })
               }
-          })
+          //})
       }
   });
 });
@@ -113,7 +115,7 @@ app.post('/register', function(req, res, next) {
   var user = req.body;
   var find = req.body.email;
   console.log(find);
-  bcrypt.hash(user.password, 10, function(err, hash) {
+  //bcrypt.hash(user.password, 10, function(err, hash) {
       user.password = hash;
       db.users.find({
         email : find
@@ -132,7 +134,7 @@ app.post('/register', function(req, res, next) {
           })
         }
       })
-  })
+  //})
 });
 
 
