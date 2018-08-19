@@ -33,7 +33,7 @@
                         <!--search-box-->
                         <div class="search-box">
                             <form>
-                                <input type="text" placeholder="Search..." required="">
+                                <input type="text" placeholder="Search..."  ng-model="search">
                                 <input type="submit" value="">
                             </form>
                         </div>
@@ -111,7 +111,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome ">
+                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome | filter: search ">
                         <div class="market-update-block clr-block-3 ">
                             <div class="col-md-8 market-update-left ">
                                 <h3>{{x.employeeName}}</h3>

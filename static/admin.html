@@ -32,7 +32,7 @@
                         <!--search-box-->
                         <div class="search-box">
                             <form>
-                                <input type="text" placeholder="Search..." required="">
+                                <input type="text" placeholder="Search..." required="" ng-model="search">
                                 <input type="submit" value="">
                             </form>
                         </div>
@@ -48,7 +48,7 @@
                                         <span ng-if="check_admin()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></span>
                                     </p>
                                     <div class="user-name" ng-if="check_admin()">
-                                        <p>Admin name</p>
+                                        <!-- <p>Admin name</p> -->
                                         <span>Administrator</span>
                                     </div>
 
@@ -125,7 +125,7 @@
                             <div class="clearfix "> </div>
                         </div>
                     </div>
-                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome ">
+                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome | filter:search">
                         <div class="market-update-block clr-block-3 ">
                             <div class="col-md-8 market-update-left ">
                                 <h3>{{x.tourName}}</h3>
