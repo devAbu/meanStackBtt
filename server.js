@@ -44,14 +44,12 @@ app.use('/admin/',function(request,response,next){
   jwt.verify(request.get('JWT'), jwt_admin, function(error, decoded) {
     if (error) {
       response.status(401).send('Unauthorized access');
-      console.log(error);
-
     } else {
-      db.users.findOne({'_id': new mongojs.ObjectId(decoded._id)}, function(error, users) {
+      db.users.findOne({'_id': new mongojs.ObjectId(decoded._id)}, function(error, user) {
         if (error){
           throw error;
         }else{
-          if(users){
+          if(user){
             next();
           }else{
             response.status(401).send('Credentials are wrong.');
@@ -344,7 +342,7 @@ app.post('/tourRequest', urlencodedParser, function (req, res, next) {
   })
 })
 
-app.post('/appFeedback', urlencodedParser, function (req, res, next) {
+app.post('/feedApp', urlencodedParser, function (req, res, next) {
   console.log(req.body)
   db.appFeedback.insert(req.body, function (err, docs) {
     console.log('inserted')

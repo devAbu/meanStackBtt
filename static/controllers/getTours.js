@@ -41,6 +41,8 @@ function getTours($scope, $http, toastr, Popeye) {
       tours()
   } else if(localStorage.getItem('type') == 'user'){
     httpUser();
+  } else {
+    toastr.error("You have to be logged in")
   }
 
   $scope.check_login = function(){
@@ -123,6 +125,36 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
+  $scope.sentFeedback = function () {
+    console.log('tour feedback sent')
+    console.log($scope.feedack)
+    $http.post('/tourFeedback', $scope.feedack).then(function (response) {
+      console.log(response)
+      //$scope.feedack.tourFeedback = "";
+      toastr.success("Thanks for your feedback!!!")
+    })
+  }
+
+  $scope.requestTour = function () {
+    console.log('tour requested')
+    console.log($scope.request)
+    $http.post('/tourRequest', $scope.request).then(function (response) {
+      console.log(response)
+      //$scope.req.email = "";
+      toastr.success("Tour requested successfully!!!")
+    })
+  }
+
+  $scope.appFeedback = function () {
+    console.log('Feedback sent')
+    console.log($scope.app)
+    $http.post('/feedApp', $scope.app).then(function (response) {
+      console.log(response)
+      //$scope.app.feedbackApp = "";
+      toastr.success("Thanks!!!")
+    })
+  }
+
   $scope.collapse = function () {
     $scope.visible = false;
     $scope.visible = $scope.visible = true;
@@ -139,39 +171,6 @@ function getTours($scope, $http, toastr, Popeye) {
   $scope.collapse4 = function () {
     $scope.visible2 = true;
     $scope.visible2 = $scope.visible2 = false;
-  }
-
-  $scope.sentFeedback = function () {
-    console.log('tour feedback sent')
-    console.log($scope.feedack)
-    $http.post('/tourFeedback', $scope.feedack).then(function (response) {
-      console.log(response)
-      //$scope.feedack.tourFeedback = "";
-      toastr.success("Thanks for your feedback!!!")
-      http()
-    })
-  }
-
-  $scope.requestTour = function () {
-    console.log('tour requested')
-    console.log($scope.request)
-    $http.post('/tourRequest', $scope.request).then(function (response) {
-      console.log(response)
-      //$scope.req.email = "";
-      toastr.success("Tour requested successfully!!!")
-      http()
-    })
-  }
-
-  $scope.appFeedback = function () {
-    console.log('Feedback sent')
-    console.log($scope.app)
-    $http.post('/appFeedback', $scope.app).then(function (response) {
-      console.log(response)
-      //$scope.req.email = "";
-      toastr.success("Thanks!!!")
-      http()
-    })
   }
 
 }

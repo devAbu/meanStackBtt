@@ -58,8 +58,8 @@
             Feedback:
         </legend>
         <form name="appForm">
-          <textarea rows="3" placeholder="Leave your feedback..." class="mb-3" id="appFeedback" required name="appFeedback" ng-model="app.appFeedback" style="font-size: 25px; resize: none; margin-bottom:5px;"></textarea>
-          <span style="color:red" ng-show="appForm.appFeedback.$untouched ||appForm.appFeedback.$error.required">Please write your opinion</span>
+          <textarea rows="3" placeholder="Leave your feedback..." class="mb-3" id="feedbackApp" required name="feedbackApp" ng-model="app.feedbackApp" style="font-size: 25px; resize: none; margin-bottom:5px;"></textarea>
+          <span style="color:red" ng-show="appForm.feedbackApp.$untouched ||appForm.feedbackApp.$error.required">Please write your opinion</span>
           <button class=" button style" style="width:100%" ng-click="appFeedback()" ng-disabled="appForm.$invalid">Send feedback</button>
         </form>
 
