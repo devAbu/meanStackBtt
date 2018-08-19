@@ -111,7 +111,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome | filter: search">
+                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome | filter: search" ng-if="check_admin()">
                         <div class="market-update-block clr-block-3 ">
                             <div class="col-md-8 market-update-left ">
                                 <h3>{{x.carName}}</h3>
