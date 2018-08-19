@@ -21,9 +21,24 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
+  var users = function () {
+    $http.get('/registeredUser').then(function (response) {
+      $scope.registeredUser = response.data - 1
+    })
+  }
+
+  var tours = function () {
+    $http.get('/toursNumber').then(function (response) {
+      $scope.toursNumber = response.data
+    })
+  }
+
+
   if(localStorage.getItem('type') == "admin"){
     console.log('juhu')
       http()
+      users()
+      tours()
   } else if(localStorage.getItem('type') == 'user'){
     httpUser();
   }
@@ -66,12 +81,13 @@ function getTours($scope, $http, toastr, Popeye) {
       $scope.tour.tourCity = ''
       $scope.tour.tourDescription = ''
       $scope.tour.tourImage = ''
-        toastr.success("Tour added successfully")
-
+      toastr.success("Tour added successfully")
+      tours()
       http()
     })
 
   }
+
 
   $scope.deleteTour = function (id) {
     console.log('delete tour')
@@ -79,6 +95,7 @@ function getTours($scope, $http, toastr, Popeye) {
     $http.delete('/admin/deleteTour/' + id, config).then(function (response) {
       console.log('removed')
       toastr.error("Tour removed")
+      tours()
       http()
     })
   }
@@ -123,4 +140,38 @@ function getTours($scope, $http, toastr, Popeye) {
     $scope.visible2 = true;
     $scope.visible2 = $scope.visible2 = false;
   }
+
+  $scope.sentFeedback = function () {
+    console.log('tour feedback sent')
+    console.log($scope.feedack)
+    $http.post('/tourFeedback', $scope.feedack).then(function (response) {
+      console.log(response)
+      //$scope.feedack.tourFeedback = "";
+      toastr.success("Thanks for your feedback!!!")
+      http()
+    })
+  }
+
+  $scope.requestTour = function () {
+    console.log('tour requested')
+    console.log($scope.request)
+    $http.post('/tourRequest', $scope.request).then(function (response) {
+      console.log(response)
+      //$scope.req.email = "";
+      toastr.success("Tour requested successfully!!!")
+      http()
+    })
+  }
+
+  $scope.appFeedback = function () {
+    console.log('Feedback sent')
+    console.log($scope.app)
+    $http.post('/appFeedback', $scope.app).then(function (response) {
+      console.log(response)
+      //$scope.req.email = "";
+      toastr.success("Thanks!!!")
+      http()
+    })
+  }
+
 }

@@ -8,7 +8,7 @@ var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
-var db = mongojs('localhost:27017/btt', ['tour','users'])
+var db = mongojs('localhost:27017/btt', ['tour','users', 'tourFeedback', 'requestedTour', 'cars', 'employees', 'appFeedback'])
 //var db = mongojs(process.env.MONGOLAB_URI || 'localhost:27017/btt', ['tour','users'])
 //var db = mongojs(process.env.MONGODB_URI || 'mongodb://devAbu:aburefko..159753@ds125372.mlab.com:25372/btt2')
 var port = process.env.PORT || 3000
@@ -327,6 +327,60 @@ app.put('/admin/employees/:id', function (req, res) {
     res.json(doc)
   })
 })
+
+app.post('/tourFeedback', urlencodedParser, function (req, res, next) {
+  console.log(req.body)
+  db.tourFeedback.insert(req.body, function (err, docs) {
+    console.log('inserted')
+    res.json(docs)
+  })
+})
+
+app.post('/tourRequest', urlencodedParser, function (req, res, next) {
+  console.log(req.body)
+  db.requestedTour.insert(req.body, function (err, docs) {
+    console.log('inserted')
+    res.json(docs)
+  })
+})
+
+app.post('/appFeedback', urlencodedParser, function (req, res, next) {
+  console.log(req.body)
+  db.appFeedback.insert(req.body, function (err, docs) {
+    console.log('inserted')
+    res.json(docs)
+  })
+})
+
+app.get('/registeredUser', urlencodedParser, function(req, res, next){
+  db.users.count(function(err, count){
+    console.log(count)
+    res.json(count)
+  })
+})
+
+app.get('/toursNumber', urlencodedParser, function(req, res, next){
+  db.tour.count(function(err, count){
+    console.log(count)
+    res.json(count)
+  })
+})
+
+app.get('/carsNumber', urlencodedParser, function(req, res, next){
+  db.cars.count(function(err, count){
+    console.log(count)
+    res.json(count)
+  })
+})
+
+app.get('/employeesNumber', urlencodedParser, function(req, res, next){
+  db.employees.count(function(err, count){
+    console.log(count)
+    res.json(count)
+  })
+})
+
+
 
 app.listen(port, function () {
   console.log('Node app is running on port', port)

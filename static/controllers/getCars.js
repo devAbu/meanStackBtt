@@ -15,10 +15,17 @@ function getCars($scope, $http, toastr, Popeye) {
     })
   }
 
+  var carsNumber = function () {
+    $http.get('/carsNumber').then(function (response) {
+      $scope.carsNumber = response.data
+    })
+  }
+
 
   if(localStorage.getItem('type') == "admin"){
     console.log('juhu')
       http()
+      carsNumber()
   } else {
     toastr.error("You can not see our cars!!!")
   }
@@ -62,7 +69,7 @@ function getCars($scope, $http, toastr, Popeye) {
       $scope.car.carDescription = ''
       $scope.car.carImage = ''
         toastr.success("car added successfully")
-
+carsNumber()
       http()
     })
 
@@ -74,6 +81,7 @@ function getCars($scope, $http, toastr, Popeye) {
     $http.delete('/admin/deleteCars/' + id, config).then(function (response) {
       console.log('removed')
       toastr.error("Car removed")
+      carsNumber()
       http()
     })
   }

@@ -21,9 +21,16 @@ function getEmployees($scope, $http, toastr, Popeye) {
     })
   }
 
+  var employeesNumber = function () {
+    $http.get('/employeesNumber').then(function (response) {
+      $scope.employeesNumber = response.data
+    })
+  }
+
   if(localStorage.getItem('type') == "admin"){
     console.log('juhu')
       http()
+      employeesNumber()
   }  else {
     toastr.error("You can not see info about our employees!!!")
   }
@@ -67,7 +74,7 @@ function getEmployees($scope, $http, toastr, Popeye) {
       $scope.employee.employeePosition = ''
       $scope.employee.employeeImage = ''
         toastr.success("employees added successfully")
-
+  employeesNumber()
       http()
     })
 
@@ -79,6 +86,7 @@ function getEmployees($scope, $http, toastr, Popeye) {
     $http.delete('/admin/deleteEmployees/' + id, config).then(function (response) {
       console.log('removed')
       toastr.error("employees removed")
+        employeesNumber()
       http()
     })
   }
