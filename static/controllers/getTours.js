@@ -133,7 +133,7 @@ function getTours($scope, $http, toastr, Popeye) {
     console.log($scope.feedTour)
     $http.post('/tourFeedback', $scope.feedTour).then(function (response) {
       console.log(response)
-      //$scope.feedack.tourFeedback = "";
+      $scope.feedTour.feedTour = "";
       toastr.success("Thanks for your feedback!!!")
     })
   }
@@ -143,7 +143,7 @@ function getTours($scope, $http, toastr, Popeye) {
     console.log($scope.request)
     $http.post('/tourRequest', $scope.request).then(function (response) {
       console.log(response)
-      //$scope.req.email = "";
+      $scope.request.email = "";
       toastr.success("Tour requested successfully!!!")
     })
   }
