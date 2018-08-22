@@ -151,7 +151,6 @@ function getTours($scope, $http, toastr, Popeye) {
 
 
   $scope.sendAppFeed = function () {
-    //$scope.juhuAbu = "abu";
     console.log('Feedback sent');
     console.log($scope.abu);
     $http.post('/sendingAppFeed', $scope.abu).then(function (response) {
