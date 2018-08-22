@@ -3,64 +3,72 @@
 
 <body id="top">
 
-    <section id="banner" data-video="images/banner">
-        <div class="inner">
-            <header>
-                <h1>BTT</h1>
-                <h3>Bosnian Tourist Travel</h3>
-                <p>A responsive video gallery template with a functional lightbox
-                    <br /> designed by abu</p>
-                <li ng-if="check_login()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></li>
-                <!-- <li ng-if="check_login()"><a style="color:red" href="#" ng-click="logout()" data-hover="Logout">Logout</a></li> -->
-            </header>
-        </div>
-    </section>
-
-    <!-- Main -->
-    <div id="main">
-        <div class="inner">
-
-            <!-- Boxes -->
-            <div class="thumbnails">
-                <div class="box" ng-repeat="x in myWelcome">
-                    <div class="image fit">
-                        <img src="{{x.tourImage}}" alt="{{x.tourName}}" />
-                    </div>
-                    <div class="inner">
-                        <h3>{{x.tourName}}</h3>
-                        <p>{{x.tourDescription}}
-                        </p>
-                        <a class="button style2 fit" ng-click="collapse()">Request</a>
-                        <a class="button style fit" ng-click="collapse3()" >Leave feedback</a>
-                        <section ng-show="visible">
-                          <form name="tourReq">
-                            <input type="email" placeholder="Email..." style="margin-bottom:10px;" required id="email" name="email" ng-model="request.email">
-                            <span style="color:red" ng-show="tourReq.email.$error.required">Please enter your email</span>
-                            <span style="color:red" ng-show="tourReq.email.$error.email">Please enter your email correctly</span>
-                            <input type="button" value="Send request" ng-click="requestTour();collapse2()" ng-disabled="tourReq.$invalid">
-                          </form>
-                        </section>
-                        <section ng-show="visible2">
-                          <form name="tourForm">
-                            <textarea style="resize:none;margin-bottom:10px;" placeholder="Feedback..." required id="tourFeedback" name="tourFeedback" ng-model="feedack.tourFeedback"></textarea>
-                            <span style="color:red" ng-show="tourForm.tourFeedback.$untouched ||tourForm.tourFeedback.$error.required">Please write your opinion</span>
-                            <input type="button" value="Send feedack" ng-click="sentFeedback(); collapse4()" ng-disabled="tourForm.$invalid">
-                          </form>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <section id="banner" data-video="images/banner">
+    <div class="inner">
+      <header>
+        <h1>BTT</h1>
+        <h3>Bosnian Tourist Travel</h3>
+        <p>A responsive video gallery template with a functional lightbox
+          <br /> designed by abu</p>
+        <li ng-if="check_login()" style="list-style:none"><a href="#" class="button style" data-hover="Logout" ng-click="logout()">Logout</a></li>
+        <!-- <li ng-if="check_login()"><a style="color:red" href="#" ng-click="logout()" data-hover="Logout">Logout</a></li> -->
+      </header>
     </div>
+  </section>
 
-    <footer ng-if="check_login()">
-        <legend>
-            Feedback:
-        </legend>
-        <form name="appForm">
-          <textarea rows="3" placeholder="Leave your feedback..." class="mb-3" id="feedbackApp" required name="feedbackApp" ng-model="abu.feedbackApp" style="font-size: 25px; resize: none; margin-bottom:5px;"></textarea>
-          <span style="color:red" ng-show="appForm.feedbackApp.$untouched ||appForm.feedbackApp.$error.required">Please write your opinion</span>
-          <button class=" button style" style="width:100%" ng-click="sendAppFeed()" ng-disabled="appForm.$invalid">Send feedback</button>
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
+
+      <!-- Boxes -->
+      <div class="thumbnails">
+        <div class="box" ng-repeat="x in myWelcome">
+          <div class="image fit">
+            <img src="{{x.tourImage}}" alt="{{x.tourName}}" />
+          </div>
+          <div class="inner">
+            <h3>{{x.tourName}}</h3>
+            <p>{{x.tourDescription}}
+            </p>
+            <a class="button style2 fit" ng-click="collapse()">Request</a>
+            <a class="button style fit" ng-click="collapse3()">Leave feedback</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popeye-modal-container" ng-show="visible">
+    <div class="popeye-modal">
+      <a class="popeye-close-modal" style="color:black" href ng-click="collapse2()"></a>
+      <h1 style="color:black">Request the tour...</h1>
+    <form name="tourReq">
+      <input type="email"  placeholder="Email..." style="margin-bottom:10px; color:black" required id="email" name="email" ng-model="request.email">
+      <span style="color:red" ng-show="tourReq.email.$error.required">Please enter your email</span>
+      <span style="color:red" ng-show="tourReq.email.$error.email">Please enter your email correctly</span>
+      <input type="button" value="Send request" ng-click="requestTour();collapse2()" ng-disabled="tourReq.$invalid">
+    </form>
+</div>
+</div>
+
+  <div class="popeye-modal-container" ng-show="visible2">
+    <div class="popeye-modal">
+      <a class="popeye-close-modal" style="color:black" href ng-click="collapse4()"></a>
+      <h2 style="color: black;">Leave feedback about the tour...</h2>
+        <form name="tourForm">
+          <input type="text"  placeholder="Feedback..." style="margin-bottom:10px; color:black" required id="feedTour" name="feedTour" ng-model="feedTour.feedTour">
+          <span style="color:red" ng-show="tourForm.feedTour.$untouched ||tourForm.feedTour.$error.required">Please write your opinion</span>
+          <input type="button" value="Send feedack" ng-click="sentFeedback(); collapse4()" ng-disabled="tourForm.$invalid">
         </form>
+    </div>
+  </div>
 
-    </footer>
+  <footer>
+    <legend>
+      Feedback:
+    </legend>
+    <form name="appForm">
+      <textarea rows="3" placeholder="Leave your feedback..." class="mb-3" id="feedbackApp" required name="feedbackApp" ng-model="feed.text" style="font-size: 25px; resize: none; margin-bottom:5px;"></textarea>
+      <span style="color:red" ng-show="appForm.feedbackApp.$untouched ||appForm.feedbackApp.$error.required">Please write your opinion</span>
+      <button class=" button style" style="width:100%" ng-click="sendAppFeed()" ng-disabled="appForm.$invalid">Send feedback</button>
+    </form>
+  </footer>

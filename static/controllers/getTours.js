@@ -125,14 +125,13 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
-  /*TODO: feedback app i tour, tour request nece da cita iz fileda
-  vidjet da se uradi nesto na fazon get / update - delete...
-  feedback tour i request peko ID --> ovo gore
+  /*TODO: feedback tour i request peko ID
+   vidjet da se uradi nesto na fazon get / update - delete...
   */
   $scope.sentFeedback = function () {
     console.log('tour feedback sent')
-    console.log($scope.feedack)
-    $http.post('/tourFeedback', $scope.feedack).then(function (response) {
+    console.log($scope.feedTour)
+    $http.post('/tourFeedback', $scope.feedTour).then(function (response) {
       console.log(response)
       //$scope.feedack.tourFeedback = "";
       toastr.success("Thanks for your feedback!!!")
@@ -152,10 +151,10 @@ function getTours($scope, $http, toastr, Popeye) {
 
   $scope.sendAppFeed = function () {
     console.log('Feedback sent');
-    console.log($scope.abu);
-    $http.post('/sendingAppFeed', $scope.abu).then(function (response) {
+    console.log($scope.feed);
+    $http.post('/sendingAppFeed', $scope.feed).then(function (response) {
       console.log(response)
-      $scope.test = "";
+      $scope.feed.text = "";
       toastr.success("Thanks!!!")
     })
   }
