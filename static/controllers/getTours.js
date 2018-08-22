@@ -125,6 +125,8 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
+//TODO: feedback app i tour, tour request nece da cita iz fileda
+
   $scope.sentFeedback = function () {
     console.log('tour feedback sent')
     console.log($scope.feedack)

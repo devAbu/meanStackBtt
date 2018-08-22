@@ -378,7 +378,7 @@ app.get('/employeesNumber', urlencodedParser, function(req, res, next){
   })
 })
 
-
+//TODO: posebna tura posebni feedback i poseban request i da se zna koji korisnik je poslao
 
 app.listen(port, function () {
   console.log('Node app is running on port', port)
