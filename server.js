@@ -342,8 +342,8 @@ app.post('/tourRequest', urlencodedParser, function (req, res, next) {
   })
 })
 
-app.post('/feedApp', urlencodedParser, function (req, res, next) {
-  console.log(req.body)
+app.post('/sendingAppFeed', urlencodedParser, function (req, res, next) {
+  console.log(req.body);
   db.appFeedback.insert(req.body, function (err, docs) {
     console.log('inserted')
     res.json(docs)
