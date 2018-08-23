@@ -326,17 +326,23 @@ app.put('/admin/employees/:id', function (req, res) {
   })
 })
 
-app.post('/tourFeedback', urlencodedParser, function (req, res, next) {
+app.post('/tourFeedback/:id', urlencodedParser, function (req, res, next) {
   console.log(req.body)
+  var id = req.params.id
+  console.log("server " +id)
+  req.body.tour_id = id
   db.tourFeedback.insert(req.body, function (err, docs) {
     console.log('inserted')
     res.json(docs)
   })
 })
 
-app.post('/tourRequest', urlencodedParser, function (req, res, next) {
+app.post('/tourRequest/:id', urlencodedParser, function (req, res, next) {
   console.log(req.body)
-  db.requestedTour.insert(req.body, function (err, docs) {
+  var id = req.params.id
+  console.log(id)
+  req.body.tour_id = id
+  db.requestedTour.insert(req.body,  function (err, docs) {
     console.log('inserted')
     res.json(docs)
   })
