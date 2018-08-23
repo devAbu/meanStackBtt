@@ -30,8 +30,8 @@
             <h3>{{x.tourName}}</h3>
             <p>{{x.tourDescription}}
             </p>
-            <a class="button style2 fit" ng-click="collapse()">Request</a>
-            <a class="button style fit" ng-click="collapse3()">Leave feedback</a>
+            <a class="button style2 fit" ng-click="collapse(x._id)">Request</a>
+            <a class="button style fit" ng-click="collapse3(x._id)">Leave feedback</a>
           </div>
         </div>
       </div>
@@ -41,24 +41,26 @@
     <div class="popeye-modal">
       <a class="popeye-close-modal" style="color:black" href ng-click="collapse2()"></a>
       <h1 style="color:black">Request the tour...</h1>
-    <form name="tourReq">
-      <input type="email"  placeholder="Email..." style="margin-bottom:10px; color:black" required id="email" name="email" ng-model="request.email">
-      <span style="color:red" ng-show="tourReq.email.$error.required">Please enter your email</span>
-      <span style="color:red" ng-show="tourReq.email.$error.email">Please enter your email correctly</span>
-      <input type="button" value="Send request" ng-click="requestTour();collapse2()" ng-disabled="tourReq.$invalid">
-    </form>
-</div>
-</div>
+      <form name="tourReq">
+        <input type="text" ng-model="test" id="test" name="test">
+        <input type="email" placeholder="Email..." style="margin-bottom:10px; color:black" required id="email" name="email" ng-model="request.email">
+        <span style="color:red" ng-show="tourReq.email.$error.required">Please enter your email</span>
+        <span style="color:red" ng-show="tourReq.email.$error.email">Please enter your email correctly</span>
+        <input type="button" value="Send request" ng-click="requestTour(test);collapse2()" ng-disabled="tourReq.$invalid">
+      </form>
+    </div>
+  </div>
 
   <div class="popeye-modal-container" ng-show="visible2">
     <div class="popeye-modal">
       <a class="popeye-close-modal" style="color:black" href ng-click="collapse4()"></a>
       <h2 style="color: black;">Leave feedback about the tour...</h2>
-        <form name="tourForm">
-          <input type="text"  placeholder="Feedback..." style="margin-bottom:10px; color:black" required id="feedTour" name="feedTour" ng-model="feedTour.feedTour">
-          <span style="color:red" ng-show="tourForm.feedTour.$untouched ||tourForm.feedTour.$error.required">Please write your opinion</span>
-          <input type="button" value="Send feedack" ng-click="sentFeedback(); collapse4()" ng-disabled="tourForm.$invalid">
-        </form>
+      <form name="tourForm">
+        <input type="text" ng-model="test2" id="test2" name="test2">
+        <input type="text" placeholder="Feedback..." style="margin-bottom:10px; color:black" required id="feedTour" name="feedTour" ng-model="feedTour.feedTour">
+        <span style="color:red" ng-show="tourForm.feedTour.$untouched ||tourForm.feedTour.$error.required">Please write your opinion</span>
+        <input type="button" value="Send feedack" ng-click="sentFeedback(test2); collapse4()" ng-disabled="tourForm.$invalid">
+      </form>
     </div>
   </div>
 

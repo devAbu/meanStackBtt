@@ -115,6 +115,7 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
+
   $scope.update = function () {
     console.log('update tour')
     console.log($scope.tour._id)
@@ -132,20 +133,22 @@ function getTours($scope, $http, toastr, Popeye) {
   /*TODO: feedback tour i request peko ID
    vidjet da se uradi nesto na fazon get / update - delete...
   */
-  $scope.sentFeedback = function () {
+  $scope.sentFeedback = function (id) {
     console.log('tour feedback sent')
     console.log($scope.feedTour)
-    $http.post('/tourFeedback', $scope.feedTour).then(function (response) {
+    console.log("request "+ id)
+    $http.post('/tourFeedback/'+id, $scope.feedTour).then(function (response) {
       console.log(response)
       $scope.feedTour.feedTour = "";
       toastr.success("Thanks for your feedback!!!")
     })
   }
 
-  $scope.requestTour = function () {
+  $scope.requestTour = function (id) {
     console.log('tour requested')
     console.log($scope.request)
-    $http.post('/tourRequest', $scope.request).then(function (response) {
+    console.log("request "+ id)
+    $http.post('/tourRequest/'+id, $scope.request).then(function (response) {
       console.log(response)
       $scope.request.email = "";
       toastr.success("Tour requested successfully!!!")
@@ -163,18 +166,25 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
-  $scope.collapse = function () {
+  $scope.collapse = function (id) {
+    console.log("ctrl "+ id)
+    var id = id
     $scope.visible = false;
     $scope.visible = $scope.visible = true;
+    $scope.test = id
   }
+
   $scope.collapse2 = function () {
     $scope.visible = true;
     $scope.visible = $scope.visible = false;
   }
 
-  $scope.collapse3 = function () {
+  $scope.collapse3 = function (id) {
+    console.log("ctrl " + id)
+    var id = id
     $scope.visible2 = false;
     $scope.visible2 = $scope.visible2 = true;
+    $scope.test2 = id
   }
   $scope.collapse4 = function () {
     $scope.visible2 = true;
