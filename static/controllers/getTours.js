@@ -72,10 +72,7 @@ function getTours($scope, $http, toastr, Popeye) {
   $scope.close = function () {
     $scope.visible = true;
     $scope.visible = $scope.visible = false;
-    $scope.tour.tourName = ''
-    $scope.tour.tourCity = ''
-    $scope.tour.tourDescription = ''
-    $scope.tour.tourImage = ''
+
   }
 
   $scope.addTour = function () {
@@ -130,9 +127,7 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
-  /*TODO: feedback tour i request peko ID
-   vidjet da se uradi nesto na fazon get / update - delete...
-  */
+  //TODO: da se adminu prikazu requested ture i feedbackovi
   $scope.sentFeedback = function (id) {
     console.log('tour feedback sent')
     console.log($scope.feedTour)

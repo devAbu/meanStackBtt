@@ -62,10 +62,6 @@ function getEmployees($scope, $http, toastr, Popeye) {
   $scope.close = function () {
     $scope.visible = true;
     $scope.visible = $scope.visible = false;
-    $scope.employee.employeeName = ''
-    $scope.employee.employeeAge = ''
-    $scope.employee.employeePosition = ''
-    $scope.employee.employeeImage = ''
   }
 
   $scope.addEmployee = function () {
