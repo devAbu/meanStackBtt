@@ -57,6 +57,10 @@ function getCars($scope, $http, toastr, Popeye) {
   $scope.close = function () {
     $scope.visible = true;
     $scope.visible = $scope.visible = false;
+    $scope.car.carName = ''
+    $scope.car.carModel = ''
+    $scope.car.carDescription = ''
+    $scope.car.carImage = ''
   }
 
   $scope.addCar = function () {

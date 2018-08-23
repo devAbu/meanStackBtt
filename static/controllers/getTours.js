@@ -72,6 +72,10 @@ function getTours($scope, $http, toastr, Popeye) {
   $scope.close = function () {
     $scope.visible = true;
     $scope.visible = $scope.visible = false;
+    $scope.tour.tourName = ''
+    $scope.tour.tourCity = ''
+    $scope.tour.tourDescription = ''
+    $scope.tour.tourImage = ''
   }
 
   $scope.addTour = function () {
