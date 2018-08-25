@@ -4,12 +4,13 @@ const app = express();
 const jwt_secret = 'WU5CjF8fHxG40S2t7oyk';
 const jwt_admin = 'SJwt25Wq62SFfjiw92sR';
 
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
-var db = mongojs('localhost:27017/btt', ['tour','users', 'tourFeedback', 'requestedTour', 'cars', 'employees', 'appFeedback'])
-//var db = mongojs(process.env.MONGOLAB_URI || 'localhost:27017/btt', ['tour','users'])
+//var db = mongojs('localhost:27017/btt', ['tour','users', 'tourFeedback', 'requestedTour', 'cars', 'employees', 'appFeedback'])
+var db = mongojs(process.env.MONGOLAB_URI || 'localhost:27017/btt', ['tour','users'])
 //var db = mongojs(process.env.MONGODB_URI || 'mongodb://devAbu:aburefko..159753@ds125372.mlab.com:25372/btt2')
 var port = process.env.PORT || 3000
 
