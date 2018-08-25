@@ -6,6 +6,7 @@ const jwt_admin = 'SJwt25Wq62SFfjiw92sR';
 var port = process.env.PORT || 3000
 // var bcrypt = require('bcrypt');
 var bcrypt = require('bcrypt-nodejs');
+//var bcrypt2 = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
@@ -114,7 +115,7 @@ app.post('/register', function(req, res, next) {
   var user = req.body;
   var find = req.body.email;
   console.log(find);
-  bcrypt.hash(user.password, 10, function(err, hash) {
+  bcrypt.hash(user.password, 10,null, function(err, hash) {
       user.password = hash;
       db.users.find({
         email : find
