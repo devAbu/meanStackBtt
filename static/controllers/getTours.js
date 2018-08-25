@@ -15,6 +15,24 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
+  var appFeed = function () {
+    $http.get('/admin/appFeedback', config).then(function (response) {
+      $scope.appFeed = response.data
+    })
+  }
+
+  var tourFeed = function () {
+    $http.get('/admin/tourFeedback', config).then(function (response) {
+      $scope.tourFeed = response.data
+    })
+  }
+
+  var tourRequest = function () {
+    $http.get('/admin/tourRequest', config).then(function (response) {
+      $scope.tourRequest = response.data
+    })
+  }
+
   var httpUser = function () {
     $http.get('/check/tours', config).then(function (response) {
       $scope.myWelcome = response.data
@@ -33,12 +51,36 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
+  var tourFeedbackNum = function () {
+    $http.get('/tourFeedbackNumber').then(function (response) {
+      $scope.tourFeedbackNumber = response.data
+    })
+  }
+
+  var appFeedbackNum = function () {
+    $http.get('/appFeedbackNum').then(function (response) {
+      $scope.appFeedbackNum = response.data
+    })
+  }
+
+  var tourRequestNum = function () {
+    $http.get('/tourRequestNum').then(function (response) {
+      $scope.tourRequestNum = response.data
+    })
+  }
+
 
   if(localStorage.getItem('type') == "admin"){
     console.log('juhu')
       http()
       users()
       tours()
+      tourFeedbackNum()
+      tourFeed()
+      appFeedbackNum()
+      appFeed()
+      tourRequestNum()
+      tourRequest()
   } else if(localStorage.getItem('type') == 'user'){
     httpUser();
   } else {
@@ -127,7 +169,6 @@ function getTours($scope, $http, toastr, Popeye) {
     })
   }
 
-  //TODO: da se adminu prikazu requested ture i feedbackovi
   $scope.sentFeedback = function (id) {
     console.log('tour feedback sent')
     console.log($scope.feedTour)

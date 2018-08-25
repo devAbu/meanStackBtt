@@ -49,6 +49,18 @@
                         templateUrl: "register.html",
                         controller : "registrationController"
                     })
+                    .when("/tourFeedback", {
+                        templateUrl: "tourFeedback.html",
+                        controller : "getTours"
+                    })
+                    .when("/appFeedback", {
+                        templateUrl: "appFeedback.html",
+                        controller : "getTours"
+                    })
+                    .when("/tourRequest", {
+                        templateUrl: "tourRequest.html",
+                        controller : "getTours"
+                    })
                     .when("/userPage", {
                         templateUrl: "user.html",
                         controller: "getTours"

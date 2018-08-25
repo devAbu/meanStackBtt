@@ -33,7 +33,7 @@
                         <!--search-box-->
                         <div class="search-box">
                             <form>
-                                <input type="text" placeholder="Search..."  ng-model="search">
+                                <input type="text" placeholder="Search..." required="" ng-model="search">
                                 <input type="submit" value="">
                             </form>
                         </div>
@@ -45,7 +45,7 @@
                             <li class="profile_details_drop">
                                 <div class="profile_img">
                                     <p>
-                                    <span ng-if="check_admin()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></span>
+                                        <span ng-if="check_admin()" style="list-style:none"><a href="#" class="button style" data-hover="Logout"  ng-click="logout()">Logout</a></span>
                                     </p>
                                     <div class="user-name" ng-if="check_admin()">
                                         <p>Admin name</p>
@@ -66,62 +66,29 @@
 
             <!--inner block start here-->
             <div class="inner-block">
-                <div style="margin-bottom: 20px; margin-left:45%">
-                    <button class="btn btn-lg btn-success" style="margin-bottom: 20px;" ng-click="open()" ng-if="check_admin()">Add new</button>
-                </div>
-                <div class="popeye-modal-container" ng-show="visible">
-                    <div class="popeye-modal">
-                        <a class="popeye-close-modal" href ng-click="close()"></a>
-                <form name="employeeForm" novalidate ng-show="visible">
-                    <div style="margin-bottom: 20px; margin-left:35%">
-                        <input type="text" placeholder="Employee name..." class="form-control" style="width: 350px" required id="employeeName" name="employeeName" ng-model="employee.employeeName">
-<span style="color:red" ng-show="employeeForm.employeeName.$untouched ||employeeForm.employeeName.$error.required">Employee name is required</span>
-                        <br>
-                        <input type="text" placeholder="Employee age..." class="form-control" required style="width: 350px" id="employeeAge" name="employeeAge" ng-model="employee.employeeAge">
-<span style="color:red" ng-show="employeeForm.employeeAge.$untouched ||employeeForm.employeeAge.$error.required">Employee age is required</span>
-                        <br>
-                        <input type="text" placeholder="Employee position..." class="form-control" required style="width: 350px" id="employeePosition" name="employeePosition"
-                            ng-model="employee.employeePosition">
-<span style="color:red" ng-show="employeeForm.employeePosition.$untouched ||employeeForm.employeePosition.$error.required">Employee position is required</span>
-                        <br>
-                        <input type="text" placeholder="Employee image..." class="form-control" required style="width: 350px" id="employeeImage" name="employeeImage"
-                            ng-model="employee.employeeImage">
-<span style="color:red" ng-show="employeeForm.employeeImage.$untouched ||employeeForm.employeeImage.$error.required">Employee image is required</span>
-                        <br>
-                        <input type="button" value="Add" class="btn btn-success" ng-click="addEmployee(); close()" ng-disabled="employeeForm.employeeName.$untouched ||employeeForm.employeeName.$error.required &&  employeeForm.employeeName.$dirty || employeeForm.employeeAge.$untouched || employeeForm.employeeAge.$error.required &&  employeeForm.employeeAge.$dirty || employeeForm.employeePosition.$untouched || employeeForm.employeePosition.$error.required &&  employeeForm.employeePosition.$dirty || employeeForm.employeeImage.$untouched ||employeeForm.employeeImage.$error.required &&  employeeForm.employeeImage.$dirty">
-                        <input type="button" value="Update" class="btn btn-warning" ng-click="update();close()" ng-disabled="employeeForm.employeeName.$untouched ||employeeForm.employeeName.$error.required &&  employeeForm.employeeName.$dirty && employeeForm.employeeAge.$untouched || employeeForm.employeeAge.$error.required &&  employeeForm.employeeAge.$dirty && employeeForm.employeePosition.$untouched || employeeForm.employeePosition.$error.required &&  employeeForm.employeePosition.$dirty && employeeForm.employeeImage.$untouched ||employeeForm.employeeImage.$error.required &&  employeeForm.employeeImage.$dirty">
-                        <input type="button" value="Close" class="btn btn-dark" ng-click="close()">
-                    </div>
-                </form>
-              </div>
-          </div>
-
                 <!--market updates updates-->
                 <div class="market-updates ">
                     <div class="col-md-12 market-update-gd" ng-if="check_admin()">
                         <div class="market-update-block clr-block-1">
                             <div class="col-md-8 market-update-left">
-                                <h3>{{employeesNumber}}</h3>
-                                <h4>Employees</h4>
+                                <h3>{{appFeedbackNum}}</h3>
+                                <h4>Feedback</h4>
                             </div>
                             <div class="col-md-4 market-update-right">
-                                <i class="fa fa-4x fa-user" style="color:white !important"></i>
+                                <i class="fa fa-4x fa-comment-o" style="color:white !important"></i>
+                                <i class="fa fa-4x fa-comments-o" style="color:white !important"></i>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in myWelcome | filter: search " ng-if="check_admin()">
+                    <div class="col-md-4 market-update-gd " style="margin-top:2% " ng-repeat="x in appFeed | filter: search" ng-if="check_admin()">
                         <div class="market-update-block clr-block-3 ">
                             <div class="col-md-8 market-update-left ">
-                                <h3>{{x.employeeName}}</h3>
-                                <h4>{{x.employeeAge}}</h4>
-                                <p>{{x.employeePosition}}</p>
-                                <button class="btn btn-warning " ng-click="edit(x._id); open()">Edit</button>
-                                <button class="btn btn-danger " ng-click="deleteEmployee(x._id) ">Remove</button>
+                                <h3>{{x.text}}</h3>
                             </div>
                             <div class="col-md-4 market-update-right ">
-                                <img src="{{x.employeeImage}}" alt="{{x.employeeImage}}" >
+                                <i class="fa fa-4x fa-suitcase " style="color: white !important "></i>
                             </div>
                             <div class="clearfix "> </div>
                         </div>

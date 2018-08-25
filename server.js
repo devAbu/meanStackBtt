@@ -375,6 +375,28 @@ app.get('/toursNumber', urlencodedParser, function(req, res, next){
   })
 })
 
+app.get('/tourFeedbackNumber', urlencodedParser, function(req, res, next){
+  db.tourFeedback.count(function(err, count){
+    console.log(count)
+    res.json(count)
+  })
+})
+
+app.get('/appFeedbackNum', urlencodedParser, function(req, res, next){
+  db.appFeedback.count(function(err, count){
+    console.log(count)
+    res.json(count)
+  })
+})
+
+app.get('/tourRequestNum', urlencodedParser, function(req, res, next){
+  db.requestedTour.count(function(err, count){
+    console.log(count)
+    res.json(count)
+  })
+})
+
+
 app.get('/carsNumber', urlencodedParser, function(req, res, next){
   db.cars.count(function(err, count){
     console.log(count)
@@ -388,6 +410,29 @@ app.get('/employeesNumber', urlencodedParser, function(req, res, next){
     res.json(count)
   })
 })
+
+app.get('/admin/tourFeedback', function (req, res) {
+  db.tourFeedback.find(function (err, docs) {
+    console.log(docs)
+    res.json(docs)
+  })
+})
+
+app.get('/admin/appFeedback', function (req, res) {
+  db.appFeedback.find(function (err, docs) {
+    console.log(docs)
+    res.json(docs)
+  })
+})
+
+app.get('/admin/tourRequest', function (req, res) {
+  db.requestedTour.find(function (err, docs) {
+    console.log(docs)
+    res.json(docs)
+  })
+})
+
+//TODO: Spojit tour feedback i request sa tabelom tour i izbacit ime te ture preko ID
 
 app.listen(port, function () {
   console.log('Node app is running on port', port)
