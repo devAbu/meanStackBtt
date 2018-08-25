@@ -11,7 +11,7 @@ var mongojs = require('mongojs');
 // var MongoId = require('mongodb').ObjectID;
 //var db = mongojs('localhost:27017/btt', ['tour','users', 'tourFeedback', 'requestedTour', 'cars', 'employees', 'appFeedback'])
 //var db = mongojs(process.env.MONGOLAB_URI || 'localhost:27017/btt2', ['tour','users'])
-var db = mongojs(process.env.MONGOLAB_URI || 'mongodb://devAbu:aburefko159753@ds125372.mlab.com:25372/btt2')
+var db = mongojs(process.env.MONGOLAB_URI || 'mongodb://devAbu:aburefko159753@ds125272.mlab.com:25272/btt')
 
 app.use(express.static(__dirname + '/static'));
 app.use(express.json()); // to support JSON-encoded bodies
