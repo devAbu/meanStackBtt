@@ -146,9 +146,33 @@ app.post('/register', function(req, res, next) {
 
 
 app.get('/admin/tours', function(req, res) {
-  db.tour.find(function(err, docs) {
-    console.log(docs)
-    res.json(docs)
+  db.tour.find(function(err, tours) {
+    //console.log(tours)
+    db.tourFeedback.aggregate([
+      {
+     $group:
+       {
+         _id: "$tour_id",
+         totalRate: { $sum: "$rate" } ,
+         avgRate: { $avg: "$rate" }
+       }
+   }
+    ], function(err, tour_rates){
+      for(var i =0 ; i < tours.length; i++){
+        for(var j = 0; j < tour_rates.length; j++){
+          if (tours[i]._id == tour_rates[j]._id){
+            tours[i].rate = tour_rates[j].avgRate;
+          }
+        }
+      }
+      console.log(tours)
+      console.log(err)
+console.log( tour_rates)
+       //for()
+       res.json(tours)
+       //res.json(tour_rates)
+    })
+
   })
 })
 
@@ -337,11 +361,22 @@ app.post('/tourFeedback/:id', urlencodedParser, function(req, res, next) {
   console.log(req.body)
   var id = req.params.id
   console.log("server " + id)
+  console.log(req.body.rate)
   req.body.tour_id = id
+  req.body.rate = Number(req.body.rate)
   db.tourFeedback.insert(req.body, function(err, docs) {
     console.log('inserted')
     res.json(docs)
   })
+
+  db.tour.aggregate( [
+   {
+     $addFields: {
+       "rate": req.body.rate ,
+      }
+   },
+] )
+
 })
 
 app.post('/tourRequest/:id', urlencodedParser, function(req, res, next) {
