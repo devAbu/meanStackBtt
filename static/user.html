@@ -56,8 +56,16 @@
       <a class="popeye-close-modal" style="color:black" href ng-click="collapse4()"></a>
       <h2 style="color: black;">Leave feedback about the tour...</h2>
       <form name="tourForm">
-        <input type="text" ng-model="test2" id="test2" name="test2" style="display:none;">
-        <input type="text" placeholder="Feedback..." style="margin-bottom:10px; color:black" required id="feedTour" name="feedTour" ng-model="feedTour.feedTour">
+        <input type="radio" style="color:black" name="jedan" id="star1" value="1" ng-model="feedTour.rate" name="star"><label for="star1" style="color: black">1</span>
+        <input type="radio" style="color:black" name="jedan" id="star2" value="2" ng-model="feedTour.rate" name="star"><label for="star2" style="color: black">2</span>
+          <input type="radio" style="color:black" name="jedan" id="star3" value="3" ng-model="feedTour.rate" name="star"><label for="star3" style="color: black">3</span>
+            <input type="radio" style="color:black" name="jedan" id="star4" value="4" ng-model="feedTour.rate" name="star"><label for="star4" style="color: black">4</span>
+              <input type="radio" style="color:black" name="jedan" id="star5" value="5" ng-model="feedTour.rate" name="star"><label for="star5" style="color: black">5</span>
+
+
+
+        <input type="text" ng-model="feedTour.test2" id="test2" name="test2" style="display:none;">
+        <input type="text" placeholder="Feedback..." style="margin-bottom:10px; color:black" required  ng-model="feedTour.text">
         <span style="color:red" ng-show="tourForm.feedTour.$untouched ||tourForm.feedTour.$error.required">Please write your opinion</span>
         <input type="button" value="Send feedack" ng-click="sentFeedback(test2); collapse4()" ng-disabled="tourForm.$invalid">
       </form>

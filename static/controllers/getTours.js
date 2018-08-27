@@ -175,7 +175,7 @@ function getTours($scope, $http, toastr, Popeye) {
     console.log("request "+ id)
     $http.post('/tourFeedback/'+id, $scope.feedTour).then(function (response) {
       console.log(response)
-      $scope.feedTour.feedTour = "";
+      $scope.feedTour.text = "";
       toastr.success("Thanks for your feedback!!!")
     })
   }
